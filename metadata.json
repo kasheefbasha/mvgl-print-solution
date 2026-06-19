@@ -1,0 +1,6 @@
+{
+  "name": "Multivista Printers Corporate Site",
+  "description": "A premium corporate manufacturing website for Multivista Printers, specializing in educational publishing, children's books, and sustainable print production.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
