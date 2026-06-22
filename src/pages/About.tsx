@@ -74,7 +74,7 @@ const values = [
     visuals: ["Precision", "Quality", "Craftsmanship"],
     desc: "Engineering quality standards on every single sheet. We ensure clean folding grids, robust thermal bind backbones, and zero-defect packaging checks.",
     icon: Star,
-    bg: "from-amber-50/50 to-orange-50/50 text-amber-600",
+    bg: "from-blue-50/50 to-sky-50/50 text-royal-blue",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
   },
   {
@@ -497,7 +497,7 @@ export function About() {
         {/* Connected vector backdrop */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40" xmlns="http://www.w3.org/2000/svg">
           <path d="M 150,150 L 500,200 L 900,100" fill="none" stroke="#0057B8" strokeWidth="1" strokeDasharray="3 3" />
-          <path d="M 500,200 L 900,300 L 1200,100" fill="none" stroke="#D4A437" strokeWidth="1" strokeDasharray="3 3" />
+          <path d="M 500,200 L 900,300 L 1200,100" fill="none" stroke="#0057B8" strokeWidth="1" strokeDasharray="3 3" />
         </svg>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">

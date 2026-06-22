@@ -31,7 +31,7 @@ export function GlobalRecognition() {
       </div>
 
       <div className="absolute bottom-12 right-12 opacity-10 pointer-events-none animate-float-medium hidden lg:block">
-        <svg width="45" height="58" viewBox="0 0 45 58" fill="none" stroke="#D4A437" strokeWidth="1">
+        <svg width="45" height="58" viewBox="0 0 45 58" fill="none" stroke="#0057B8" strokeWidth="1">
           <rect x="2" y="2" width="41" height="54" rx="2" fill="white" />
           <line x1="8" y1="12" x2="37" y2="12" stroke="#E2E8F0" strokeWidth="1" />
           <line x1="8" y1="20" x2="37" y2="20" stroke="#E2E8F0" strokeWidth="1" />
@@ -84,7 +84,7 @@ export function GlobalRecognition() {
                     <path d="M 80,30 C 80,25 70,25 70,30 L 70,40 C 70,45 80,45 80,40 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
                     <path d="M 50,65 L 50,80" stroke="currentColor" strokeWidth="2" />
                     <path d="M 35,80 L 65,80" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="50" cy="40" r="8" fill="#D4A437" fillOpacity="0.2" />
+                    <circle cx="50" cy="40" r="8" fill="#0057B8" fillOpacity="0.2" />
                   </svg>
                 </div>
 
@@ -251,7 +251,7 @@ export function GlobalRecognition() {
                     <path d="M 80,30 C 80,25 70,25 70,30 L 70,40 C 70,45 80,45 80,40 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
                     <path d="M 50,65 L 50,80" stroke="currentColor" strokeWidth="2" />
                     <path d="M 35,80 L 65,80" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="50" cy="40" r="8" fill="#D4A437" fillOpacity="0.2" />
+                    <circle cx="50" cy="40" r="8" fill="#0057B8" fillOpacity="0.2" />
                   </svg>
                 </div>
 

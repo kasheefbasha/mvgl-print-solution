@@ -35,8 +35,8 @@ export function PublishingEcosystem() {
           <line x1="35" y1="48" x2="65" y2="48" stroke="currentColor" strokeWidth="1.5" />
           <line x1="35" y1="58" x2="55" y2="58" stroke="currentColor" strokeWidth="1.5" />
           {/* Scientific node outline */}
-          <circle cx="65" cy="68" r="6" fill="#D4A437" />
-          <line x1="55" y1="68" x2="59" y2="68" stroke="#D4A437" strokeWidth="1" />
+          <circle cx="65" cy="68" r="6" fill="#0057B8" />
+          <line x1="55" y1="68" x2="59" y2="68" stroke="#0057B8" strokeWidth="1" />
         </svg>
       ),
     },
@@ -54,7 +54,7 @@ export function PublishingEcosystem() {
           <rect x="25" y="20" width="50" height="60" rx="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
           {/* Heartbeat pulse graphic */}
           <path d="M 32,50 L 42,50 L 46,38 L 50,62 L 54,46 L 58,50 L 68,50" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="50" cy="50" r="25" fill="none" stroke="#D4A437" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.4" />
+          <circle cx="50" cy="50" r="25" fill="none" stroke="#0057B8" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.4" />
         </svg>
       ),
     },
@@ -90,7 +90,7 @@ export function PublishingEcosystem() {
       renderSVG: (
         <svg viewBox="0 0 100 100" className="w-20 h-20 text-royal-blue">
           {/* Foil shine rays */}
-          <g stroke="#D4A437" strokeWidth="1" opacity="0.8">
+          <g stroke="#0057B8" strokeWidth="1" opacity="0.8">
             <line x1="50" y1="15" x2="50" y2="25" />
             <line x1="50" y1="75" x2="50" y2="85" />
             <line x1="15" y1="50" x2="25" y2="50" />
@@ -98,7 +98,7 @@ export function PublishingEcosystem() {
           </g>
           {/* Custom stamp badge */}
           <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="2" />
-          <polygon points="50,38 53,45 61,45 55,49 57,56 50,52 43,56 45,49 39,45 47,45" fill="#D4A437" />
+          <polygon points="50,38 53,45 61,45 55,49 57,56 50,52 43,56 45,49 39,45 47,45" fill="#0057B8" />
         </svg>
       ),
     },
@@ -134,8 +134,8 @@ export function PublishingEcosystem() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 text-emerald-600">
           <rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
           {/* Sparkles stars */}
-          <path d="M 40,40 L 42,45 L 47,45 L 43,48 L 45,53 L 40,50 L 35,53 L 37,48 L 33,45 L 38,45 Z" fill="#D4A437" />
-          <path d="M 60,55 L 61,58 L 64,58 L 62,60 L 63,63 L 60,61 L 57,63 L 58,60 L 56,58 L 59,58 Z" fill="#D4A437" />
+          <path d="M 40,40 L 42,45 L 47,45 L 43,48 L 45,53 L 40,50 L 35,53 L 37,48 L 33,45 L 38,45 Z" fill="#0057B8" />
+          <path d="M 60,55 L 61,58 L 64,58 L 62,60 L 63,63 L 60,61 L 57,63 L 58,60 L 56,58 L 59,58 Z" fill="#0057B8" />
         </svg>
       ),
     },

@@ -20,7 +20,7 @@ export function FoundationOfExcellence() {
       </div>
 
       <div className="absolute bottom-1/4 left-12 opacity-10 pointer-events-none animate-float-medium hidden lg:block">
-        <svg width="45" height="58" viewBox="0 0 45 58" fill="none" stroke="#D4A437" strokeWidth="1">
+        <svg width="45" height="58" viewBox="0 0 45 58" fill="none" stroke="#0057B8" strokeWidth="1">
           <rect x="2" y="2" width="41" height="54" rx="2" fill="white" />
           <line x1="8" y1="12" x2="37" y2="12" stroke="#E2E8F0" strokeWidth="1" />
           <line x1="8" y1="20" x2="37" y2="20" stroke="#E2E8F0" strokeWidth="1" />
@@ -62,7 +62,7 @@ export function FoundationOfExcellence() {
               <linearGradient id="journey-grad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#0057B8" opacity="0.3" />
                 <stop offset="33%" stopColor="#0A2342" opacity="0.5" />
-                <stop offset="66%" stopColor="#D4A437" opacity="0.5" />
+                <stop offset="66%" stopColor="#0057B8" opacity="0.5" />
                 <stop offset="100%" stopColor="#0057B8" opacity="0.3" />
               </linearGradient>
             </defs>

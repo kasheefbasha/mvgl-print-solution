@@ -21,7 +21,7 @@ export function ManufacturingImpact() {
       </div>
 
       <div className="absolute bottom-20 right-8 md:right-28 opacity-15 pointer-events-none animate-float-medium select-none hidden sm:block">
-        <svg width="60" height="78" viewBox="0 0 60 78" fill="none" stroke="#D4A437" strokeWidth="1">
+        <svg width="60" height="78" viewBox="0 0 60 78" fill="none" stroke="#0057B8" strokeWidth="1">
           <rect x="2" y="2" width="56" height="74" rx="4" fill="white" />
           <line x1="10" y1="15" x2="50" y2="15" stroke="#E2E8F0" strokeWidth="1" />
           <line x1="10" y1="25" x2="50" y2="25" stroke="#E2E8F0" strokeWidth="1" />

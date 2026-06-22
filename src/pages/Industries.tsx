@@ -755,7 +755,7 @@ export function Industries() {
                   <defs>
                     <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#0057B8" />
-                      <stop offset="50%" stopColor="#D4A437" />
+                      <stop offset="50%" stopColor="#0057B8" />
                       <stop offset="100%" stopColor="#0A2342" />
                     </linearGradient>
                   </defs>
@@ -776,7 +776,7 @@ export function Industries() {
                   
                   {/* Flow Direction Indicators */}
                   <polygon points="105,127 101,120 109,122" fill="#0057B8" />
-                  <polygon points="150,195 158,191 158,199" fill="#D4A437" />
+                  <polygon points="150,195 158,191 158,199" fill="#0057B8" />
                   <polygon points="195,127 199,120 191,122" fill="#0A2342" />
                 </svg>
 
@@ -871,7 +871,7 @@ export function Industries() {
           <svg className="w-full h-full opacity-[0.06] select-none" xmlns="http://www.w3.org/2000/svg">
             <line x1="5%" y1="90%" x2="45%" y2="25%" stroke="#FFFFFF" strokeWidth="0.75" strokeDasharray="3 3" />
             <line x1="45%" y1="25%" x2="85%" y2="85%" stroke="#FFFFFF" strokeWidth="0.75" strokeDasharray="3 3" />
-            <circle cx="45%" cy="25%" r="6" fill="none" stroke="#D4A437" strokeWidth="1" />
+            <circle cx="45%" cy="25%" r="6" fill="none" stroke="#0057B8" strokeWidth="1" />
             <circle cx="85%" cy="85%" r="4" fill="none" stroke="#0057B8" strokeWidth="1" />
             <circle cx="5%" cy="90%" r="4" fill="none" stroke="#0057B8" strokeWidth="1" />
           </svg>

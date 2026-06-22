@@ -44,7 +44,7 @@ export function Products() {
       idealFor: ["Trade Books", "Coffee Table Books", "Collector's Editions", "Academic References", "Children's Premium Editions"],
       capabilities: ["Case Binding", "Thread Sewing", "Jacket Covers", "Cloth Binding", "Foil Stamping", "Embossing", "Spot UV", "Ribbon Markers", "Slip Cases"],
       bgStyle: "bg-gradient-to-br from-deep-navy via-navy-900 to-[#07172B] text-white",
-      visualTheme: "luxury-gold",
+      visualTheme: "luxury-blue",
       layout: "standard",
       phase: "Paper"
     },
@@ -96,7 +96,7 @@ export function Products() {
             <line x1="90%" y1="10%" x2="20%" y2="90%" stroke="#0A2342" strokeWidth="0.5" strokeDasharray="3 3" />
             {/* Hardcover outline blueprint box */}
             <rect x="75%" y="15%" width="120" height="160" rx="4" fill="none" stroke="#0057B8" strokeWidth="1" transform="rotate(15 75% 15%)" />
-            <circle cx="20%" cy="30%" r="60" fill="none" stroke="#D4A437" strokeWidth="0.75" strokeDasharray="2 4" />
+            <circle cx="20%" cy="30%" r="60" fill="none" stroke="#0057B8" strokeWidth="0.75" strokeDasharray="2 4" />
           </svg>
         </div>
 
@@ -135,7 +135,7 @@ export function Products() {
             className={`relative py-32 overflow-hidden scroll-mt-20 ${sec.bgStyle}`}
           >
             {/* Background design graphics for specific themes */}
-            {sec.visualTheme === "luxury-gold" && (
+            {sec.visualTheme === "luxury-blue" && (
               <div className="absolute right-0 top-0 w-[300px] h-full bg-gradient-to-l from-gold-accent/[0.03] to-transparent pointer-events-none" />
             )}
             

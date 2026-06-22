@@ -84,7 +84,7 @@ const facilitySections: FacilitySection[] = [
       { label: "Available Bind Formats", value: "7+ Professional Formats" }
     ],
     image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=1200",
-    colorClass: "from-amber-500/10 to-orange-500/5 text-gold-accent"
+    colorClass: "from-blue-500/10 to-sky-500/5 text-gold-accent"
   },
   {
     id: "logistics",
