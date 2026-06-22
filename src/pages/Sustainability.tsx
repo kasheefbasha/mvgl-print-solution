@@ -17,7 +17,10 @@ import {
   Zap,
   TrendingDown,
   Layers,
-  Star
+  Star,
+  ArrowUpRight,
+  X,
+  ExternalLink
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -223,6 +226,41 @@ const reports = [
   { title: "FSC® & PEFC Certifications", type: "Certificate Document", size: "0.9 MB", desc: "Official forest product tracking certifications and registration keys." }
 ];
 
+const footprintReports = [
+  {
+    title: "Carbon Footprint Report FY 2025-26",
+    subtitle: "CFP Report FY 2025-26",
+    description: "Detailed carbon footprint calculations and disclosures for the fiscal year 2025-2026, mapping emissions offsets and solar energy yields.",
+    pdfPath: "/Carbon Footprints/CFP Report FY 2025-26.pdf",
+    size: "1.2 MB",
+    icon: Leaf
+  },
+  {
+    title: "GHG Emissions Report FY 2024-25",
+    subtitle: "GHG Emissions FY 2024-25",
+    description: "Comprehensive Scope 1, 2, and 3 greenhouse gas auditing and validation data, demonstrating significant reduction steps.",
+    pdfPath: "/Carbon Footprints/Multivista GHG emissions report FY 2024-2025.pdf",
+    size: "1.3 MB",
+    icon: Globe
+  },
+  {
+    title: "GHG Emissions Report FY 2021-22",
+    subtitle: "GHG Emissions FY 2021-22",
+    description: "Decarbonization tracking and carbon accounting validation data for the fiscal year 2021-22.",
+    pdfPath: "/Carbon Footprints/GHG Report 2021_22.pdf",
+    size: "1.1 MB",
+    icon: Recycle
+  },
+  {
+    title: "CFP Assessment Report 2020-21",
+    subtitle: "CFP Assessment 2020-21",
+    description: "Initial environmental audits, mapping emission points and outlining the foundational steps of our net-zero pathway.",
+    pdfPath: "/Carbon Footprints/CFP ASSESSMENT REPORT_MultiVista_2020_21.pdf",
+    size: "1.4 MB",
+    icon: Award
+  }
+];
+
 interface InitiativeCardProps {
   key?: React.Key;
   num: string;
@@ -247,14 +285,14 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" 
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-emerald-500/10 to-teal-500/5 flex items-center justify-center relative">
+          <div className="w-full h-full bg-gradient-to-br from-sky-500/10 to-blue-500/5 flex items-center justify-center relative">
             <div className="absolute inset-0 bg-blueprint-grid opacity-5" />
-            <Leaf className="w-8 h-8 text-emerald-500/40 animate-pulse" />
+            <Leaf className="w-8 h-8 text-sky-500/40 animate-pulse" />
           </div>
         )}
         {/* Number Badge */}
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm border border-slate-200/50 rounded-xl px-3 py-1 shadow-sm flex items-center gap-1.5 z-20">
-          <span className="text-[10px] font-bold text-emerald-600 font-mono tracking-wider">
+          <span className="text-[10px] font-bold text-sky-600 font-mono tracking-wider">
             {num}
           </span>
         </div>
@@ -267,14 +305,14 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
       <div className="p-6 md:p-8 flex flex-col justify-between flex-grow space-y-4">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold text-emerald-600 tracking-widest uppercase font-heading">
+            <span className="text-[9px] font-bold text-sky-600 tracking-widest uppercase font-heading">
               INITIATIVE
             </span>
-            <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100/50 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+            <div className="p-1.5 rounded-lg bg-sky-50 text-sky-600 border border-sky-100/50 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
               <Icon className="w-4 h-4" />
             </div>
           </div>
-          <h3 className="text-lg md:text-xl font-bold text-deep-navy font-heading leading-snug group-hover:text-emerald-600 transition-colors duration-300">
+          <h3 className="text-lg md:text-xl font-bold text-deep-navy font-heading leading-snug group-hover:text-sky-600 transition-colors duration-300">
             {title}
           </h3>
           <p className="text-xs md:text-sm text-gray-500 font-sans leading-relaxed font-light">
@@ -283,7 +321,7 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
         </div>
         
         {/* Subtle decorative line */}
-        <div className="h-[2px] w-8 bg-emerald-500/20 group-hover:w-16 group-hover:bg-emerald-500 transition-all duration-300" />
+        <div className="h-[2px] w-8 bg-sky-500/20 group-hover:w-16 group-hover:bg-sky-500 transition-all duration-300" />
       </div>
     </div>
   );
@@ -291,6 +329,7 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
 
 export function Sustainability() {
   const [activeScope, setActiveScope] = useState<'scope1' | 'scope2' | 'scope3'>('scope1');
+  const [activeReport, setActiveReport] = useState<any>(null);
   
   // Parallax Hero state
   const [heroScroll, setHeroScroll] = useState(0);
@@ -436,28 +475,28 @@ export function Sustainability() {
 
         {/* Floating environmental leaf outlines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" xmlns="http://www.w3.org/2000/svg">
-          <g className="floating-leaf text-emerald-500/15" transform="translate(150, 150)">
+          <g className="floating-leaf text-sky-500/15" transform="translate(150, 150)">
             <path d="M0,0 Q30,-20 60,0 T120,0 Q90,30 60,30 T0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </g>
-          <g className="floating-leaf text-emerald-500/10" transform="translate(1200, 350) scale(0.8)" style={{ animationDelay: "-3s" }}>
+          <g className="floating-leaf text-sky-500/10" transform="translate(1200, 350) scale(0.8)" style={{ animationDelay: "-3s" }}>
             <path d="M0,0 Q30,-20 60,0 T120,0 Q90,30 60,30 T0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </g>
         </svg>
 
         {/* Hero content */}
         <div className="relative z-30 max-w-5xl mx-auto px-6 text-center space-y-8">
-          <span className="text-[10px] font-bold text-emerald-400 tracking-widest font-heading uppercase bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full inline-block">
+          <span className="text-[10px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full inline-block">
             RESPONSIBILITY & PROGRESS
           </span>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight font-heading leading-tight max-w-4xl mx-auto text-white">
             Manufacturing a Better Future,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">One Book at a Time</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-300">One Book at a Time</span>
           </h1>
           <p className="text-base md:text-lg text-gray-300 font-sans font-light leading-relaxed max-w-2xl mx-auto">
             At Multivista, sustainability is more than a responsibility; it is a business philosophy that shapes every decision we make.
           </p>
           <div className="pt-6 flex justify-center">
-            <Button href="#philosophy" variant="primary" className="rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-wider bg-emerald-500 hover:bg-emerald-600 border-none shadow-md inline-flex items-center gap-2 group">
+            <Button href="#philosophy" variant="primary" className="rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-wider bg-sky-500 hover:bg-sky-600 border-none shadow-md inline-flex items-center gap-2 group">
               <span>Explore Our Journey</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -468,7 +507,7 @@ export function Sustainability() {
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 opacity-60">
           <span className="text-[8px] font-bold tracking-widest uppercase text-gray-400">SCROLL DOWN</span>
           <div className="w-1.5 h-6 bg-white/20 rounded-full relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2.5 bg-emerald-400 rounded-full animate-bounce" />
+            <div className="absolute top-0 left-0 w-full h-2.5 bg-sky-400 rounded-full animate-bounce" />
           </div>
         </div>
       </section>
@@ -480,7 +519,7 @@ export function Sustainability() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left: Headline & editorial typography */}
             <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-[9px] font-bold text-emerald-600 tracking-widest font-heading uppercase bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-1 rounded-md inline-block">
+              <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-md inline-block">
                 PHILOSOPHY
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading leading-tight">
@@ -489,7 +528,7 @@ export function Sustainability() {
               <p className="text-lg text-gray-650 font-sans font-light leading-relaxed">
                 Our sustainability journey is guided by a simple belief: manufacturing excellence and environmental stewardship must go hand in hand.
               </p>
-              <div className="h-[2px] w-16 bg-emerald-500" />
+              <div className="h-[2px] w-16 bg-sky-500" />
             </div>
 
             {/* Right: Environmental portrait overlapping the grid */}
@@ -511,6 +550,74 @@ export function Sustainability() {
         </div>
       </section>
 
+      {/* SECTION 02.5: CARBON FOOTPRINT REPORTS */}
+      <section id="carbon-footprints" className="relative py-24 bg-[#F8FAFC] border-t border-b border-slate-100 font-sans scroll-mt-24">
+        <div className="absolute inset-0 bg-print-grid opacity-30 pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto mb-16">
+            <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-full inline-block mb-4">
+              CARBON AUDITS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-deep-navy mt-4 mb-4 leading-tight font-heading">
+              Carbon Footprint Disclosures
+            </h2>
+            <p className="text-xs md:text-sm text-gray-500 font-sans font-light leading-relaxed max-w-xl mx-auto">
+              Access and preview our certified greenhouse gas accounting sheets and environmental assessment reports.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {footprintReports.map((report) => {
+              const Icon = report.icon;
+              return (
+                <motion.div 
+                  key={report.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-3xl border border-slate-150 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 text-left relative group min-h-[300px]"
+                >
+                  <div className="space-y-4">
+                    {/* Icon Badge */}
+                    <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-600 flex items-center justify-center border border-sky-500/20 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-5 h-5" />
+                    </div>
+
+                    <span className="text-[9px] font-bold text-sky-600 uppercase tracking-widest font-heading block">
+                      {report.subtitle}
+                    </span>
+
+                    <h3 className="text-base font-bold text-deep-navy font-heading leading-tight group-hover:text-sky-600 transition-colors duration-300">
+                      {report.title}
+                    </h3>
+
+                    <p className="text-xs text-gray-450 font-sans leading-relaxed font-light">
+                      {report.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-100 flex flex-col gap-3 mt-6">
+                    <div className="flex justify-between items-center text-[10px] font-bold text-gray-400 font-mono">
+                      <span>PDF — {report.size}</span>
+                    </div>
+                    
+                    <button
+                      type="button"
+                      onClick={() => setActiveReport(report)}
+                      className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-slate-100 text-slate-655 font-medium text-xs bg-slate-50 hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-all duration-300 group/btn mt-1 cursor-pointer"
+                    >
+                      <span>View Report</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 03: SUSTAINABILITY AT A GLANCE */}
       <section className="relative py-28 text-white overflow-hidden bg-[#070E17]">
         {/* Background Image with Aerial forestry */}
@@ -519,7 +626,7 @@ export function Sustainability() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[9px] font-bold text-emerald-400 tracking-widest font-heading uppercase bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full inline-block">
               IMPACT WALL
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-4 leading-tight">
@@ -548,7 +655,7 @@ export function Sustainability() {
                 className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex flex-col justify-between text-left"
               >
                 <div>
-                  <div className="text-3xl font-bold font-heading text-emerald-400 mb-1">
+                  <div className="text-3xl font-bold font-heading text-sky-400 mb-1">
                     {stat.val}
                   </div>
                   <h4 className="text-xs font-bold text-white font-heading uppercase tracking-wide mb-3">
@@ -581,7 +688,7 @@ export function Sustainability() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
             <div className="text-left max-w-2xl mb-12">
-              <span className="text-[9px] font-bold text-emerald-400 tracking-widest font-heading uppercase bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full inline-block">
+              <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block">
                 TIMELINE
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-4 leading-tight">
@@ -603,15 +710,15 @@ export function Sustainability() {
                       className={cn(
                         "w-[20rem] md:w-[26rem] shrink-0 p-8 rounded-3xl border transition-all duration-500 text-left relative overflow-hidden",
                         isActive 
-                          ? "bg-white/10 backdrop-blur-md border-emerald-500/40 shadow-xl shadow-emerald-500/5" 
+                          ? "bg-white/10 backdrop-blur-md border-sky-500/40 shadow-xl shadow-sky-500/5" 
                           : "bg-white/5 backdrop-blur-sm border-white/5 opacity-40 scale-98"
                       )}
                     >
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none" />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 rounded-bl-full pointer-events-none" />
                       
                       <span className={cn(
                         "text-3xl font-bold font-heading transition-colors duration-500",
-                        isActive ? "text-emerald-400 scale-105 inline-block" : "text-gray-400"
+                        isActive ? "text-sky-400 scale-105 inline-block" : "text-gray-400"
                       )}>
                         {m.year}
                       </span>
@@ -630,7 +737,7 @@ export function Sustainability() {
             {/* Horizontal Track line indicating scroll depth */}
             <div className="mt-12 max-w-xl h-[2px] bg-white/10 rounded-full relative overflow-hidden">
               <div 
-                className="absolute left-0 top-0 h-full bg-emerald-400 rounded-full transition-all duration-300 ease-out"
+                className="absolute left-0 top-0 h-full bg-sky-400 rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${journeyProgress * 100}%` }}
               />
             </div>
@@ -648,7 +755,7 @@ export function Sustainability() {
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-36 space-y-8">
                 <div className="space-y-4">
-                  <span className="text-[9px] font-bold text-emerald-600 tracking-widest font-heading uppercase bg-emerald-500/5 border border-emerald-500/10 px-3 py-1 rounded-full inline-block">
+                  <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-3 py-1 rounded-full inline-block">
                     OUR PILLARS
                   </span>
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading font-bold">
@@ -665,7 +772,7 @@ export function Sustainability() {
                   <div className="absolute left-[18px] top-[36px] bottom-[36px] w-[2px] pointer-events-none">
                     <div className="absolute inset-0 bg-slate-100 rounded-full" />
                     <div 
-                      className="absolute top-0 left-0 w-full bg-emerald-500 rounded-full transition-all duration-500 ease-out"
+                      className="absolute top-0 left-0 w-full bg-sky-500 rounded-full transition-all duration-500 ease-out"
                       style={{
                         height: `${(activePillarIndex / (pillars.length - 1)) * 100}%`
                       }}
@@ -685,7 +792,7 @@ export function Sustainability() {
                             className={cn(
                               "absolute left-[18px] -translate-x-1/2 w-4.5 h-4.5 rounded-full border-2 bg-white cursor-pointer transition-all duration-300 flex items-center justify-center z-20 outline-none",
                               isActive 
-                                ? "border-emerald-500 bg-emerald-500 scale-110 ring-4 ring-emerald-500/15 shadow-sm" 
+                                ? "border-sky-500 bg-sky-500 scale-110 ring-4 ring-sky-500/15 shadow-sm" 
                                 : "border-slate-200 hover:border-slate-400"
                             )}
                             aria-label={`Go to ${item.title}`}
@@ -700,7 +807,7 @@ export function Sustainability() {
                             className={cn(
                               "w-full text-left ml-9 p-4 rounded-xl border transition-all duration-300 flex items-center justify-between group cursor-pointer",
                               isActive 
-                                ? "bg-emerald-500/[0.02] border-emerald-500/30 shadow-md shadow-emerald-500/5" 
+                                ? "bg-sky-500/[0.02] border-sky-500/30 shadow-md shadow-sky-500/5" 
                                 : "bg-white border-gray-100 hover:border-gray-200"
                             )}
                           >
@@ -708,7 +815,7 @@ export function Sustainability() {
                               <div className={cn(
                                 "w-8 h-8 rounded-lg flex items-center justify-center border transition-all duration-300",
                                 isActive 
-                                  ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-600" 
+                                  ? "bg-sky-500/10 border-sky-500/20 text-sky-600" 
                                   : "bg-slate-50 border-transparent text-gray-400"
                               )}>
                                 <Icon className="w-4 h-4" />
@@ -716,7 +823,7 @@ export function Sustainability() {
                               <div className="space-y-0.5">
                                 <span className={cn(
                                   "text-[9px] font-bold font-heading tracking-widest uppercase block transition-colors duration-300",
-                                  isActive ? "text-emerald-600" : "text-gray-400"
+                                  isActive ? "text-sky-600" : "text-gray-400"
                                 )}>
                                   Pillar {item.num}
                                 </span>
@@ -730,7 +837,7 @@ export function Sustainability() {
                             </div>
                             <ChevronRight className={cn(
                               "w-4 h-4 transition-transform duration-300",
-                              isActive ? "text-emerald-500 translate-x-1" : "text-gray-300 group-hover:translate-x-0.5"
+                              isActive ? "text-sky-500 translate-x-1" : "text-gray-300 group-hover:translate-x-0.5"
                             )} />
                           </button>
                         </div>
@@ -756,7 +863,7 @@ export function Sustainability() {
                   >
                     <div className={cn(
                       "relative group rounded-3xl overflow-hidden shadow-xl aspect-[4/3] border bg-slate-50 mb-6 transition-all duration-700",
-                      isActive ? "border-emerald-500/30 shadow-emerald-500/5 shadow-2xl" : "border-gray-200/60 shadow-md"
+                      isActive ? "border-sky-500/30 shadow-sky-500/5 shadow-2xl" : "border-gray-200/60 shadow-md"
                     )}>
                       <img 
                         src={item.image} 
@@ -777,7 +884,7 @@ export function Sustainability() {
                             className={cn(
                               "text-[10px] font-semibold px-2.5 py-1 rounded-md border transition-all duration-500",
                               isActive 
-                                ? "text-emerald-650 bg-emerald-500/10 border-emerald-500/20" 
+                                ? "text-sky-600 bg-sky-500/10 border-sky-500/20" 
                                 : "text-gray-400 bg-gray-50 border-gray-200"
                             )}
                           >
@@ -813,7 +920,7 @@ export function Sustainability() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[9px] font-bold text-emerald-600 tracking-widest font-heading uppercase bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-full inline-block">
               GALLERY
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading mt-4 leading-tight">
@@ -847,7 +954,7 @@ export function Sustainability() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-6 text-left space-y-4">
-              <span className="text-[9px] font-bold text-emerald-600 tracking-widest font-heading uppercase bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-1 rounded-md inline-block">
+              <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-md inline-block">
                 ANALYTICS
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading mt-2">
@@ -868,7 +975,7 @@ export function Sustainability() {
                   className={cn(
                     "px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider border transition-all duration-300 cursor-pointer shadow-sm focus:outline-none",
                     activeScope === s
-                      ? "bg-emerald-500 text-white border-emerald-500"
+                      ? "bg-sky-500 text-white border-sky-500"
                       : "bg-slate-50 text-gray-650 border-slate-200 hover:border-slate-300"
                   )}
                 >
@@ -882,7 +989,7 @@ export function Sustainability() {
           <div className="p-8 md:p-12 rounded-3xl border border-slate-100 bg-gradient-to-br from-slate-50/50 to-white shadow-sm text-left">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
               <div className="lg:col-span-8 space-y-4">
-                <div className="flex items-center gap-2 text-emerald-600">
+                <div className="flex items-center gap-2 text-sky-600">
                   <TrendingDown className="w-5 h-5" />
                   <span className="text-xs font-bold font-heading uppercase tracking-wide">
                     {emissionsData[activeScope].reduction}
@@ -914,7 +1021,7 @@ export function Sustainability() {
                         initial={{ width: 0 }}
                         animate={{ width: `${widthPercent}%` }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-400 to-teal-400 rounded-lg"
+                        className="absolute left-0 top-0 h-full bg-gradient-to-r from-sky-400 to-blue-400 rounded-lg"
                       />
                       <span className="relative z-10 text-[10px] font-bold text-deep-navy uppercase tracking-wider font-heading">
                         {item.label}
@@ -934,7 +1041,7 @@ export function Sustainability() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[9px] font-bold text-emerald-400 tracking-widest font-heading uppercase bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block">
               EXHIBITION WALL
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-4 leading-tight">
@@ -952,16 +1059,16 @@ export function Sustainability() {
               return (
                 <div 
                   key={cert.title}
-                  className="p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent shadow-lg hover:border-emerald-500/30 hover:shadow-emerald-500/5 transition-all duration-500 flex flex-col justify-between text-left group"
+                  className="p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent shadow-lg hover:border-sky-500/30 hover:shadow-sky-500/5 transition-all duration-500 flex flex-col justify-between text-left group"
                 >
                   <div>
-                    <div className="p-2.5 rounded-xl bg-white/5 text-emerald-400 border border-white/5 self-start inline-block mb-4">
+                    <div className="p-2.5 rounded-xl bg-white/5 text-sky-400 border border-white/5 self-start inline-block mb-4">
                       <Icon className="w-5 h-5 animate-pulse" />
                     </div>
-                    <h3 className="text-base font-bold text-white font-heading leading-tight group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-base font-bold text-white font-heading leading-tight group-hover:text-sky-300 transition-colors">
                       {cert.title}
                     </h3>
-                    <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mt-1">
+                    <p className="text-[10px] font-bold text-sky-400 uppercase tracking-widest mt-1">
                       {cert.org}
                     </p>
                   </div>
@@ -981,7 +1088,7 @@ export function Sustainability() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[9px] font-bold text-emerald-600 tracking-widest font-heading uppercase bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-full inline-block">
               RESOURCES
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading mt-4 leading-tight">
@@ -1001,13 +1108,13 @@ export function Sustainability() {
               >
                 <div className="space-y-4">
                   {/* Decorative book binder line */}
-                  <div className="h-1.5 w-12 bg-emerald-500 rounded-full" />
+                  <div className="h-1.5 w-12 bg-sky-500 rounded-full" />
                   
-                  <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest font-heading">
+                  <span className="text-[9px] font-bold text-sky-600 uppercase tracking-widest font-heading">
                     {rep.type}
                   </span>
                   
-                  <h3 className="text-base font-bold text-deep-navy font-heading leading-tight group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-base font-bold text-deep-navy font-heading leading-tight group-hover:text-sky-600 transition-colors">
                     {rep.title}
                   </h3>
                   
@@ -1022,7 +1129,7 @@ export function Sustainability() {
                   </span>
                   <button 
                     type="button"
-                    className="w-8 h-8 rounded-lg bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white transition-all flex items-center justify-center cursor-pointer border border-emerald-100"
+                    className="w-8 h-8 rounded-lg bg-sky-50 hover:bg-sky-500 text-sky-600 hover:text-white transition-all flex items-center justify-center cursor-pointer border border-sky-100"
                     aria-label="Download Document"
                   >
                     <Download className="w-4 h-4" />
@@ -1046,7 +1153,7 @@ export function Sustainability() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
-          <span className="text-[10px] font-bold text-emerald-400 tracking-widest font-heading uppercase bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full inline-block">
+          <span className="text-[10px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full inline-block">
             CREATING THE FUTURE
           </span>
           
@@ -1058,10 +1165,10 @@ export function Sustainability() {
             Together with our partners, we are creating a future where exceptional books are manufactured responsibly, ethically and sustainably.
           </p>
 
-          <div className="h-[2px] w-24 bg-gradient-to-r from-emerald-500 via-teal-300 to-emerald-500 mx-auto" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-sky-500 via-blue-300 to-sky-500 mx-auto" />
 
           <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button href="/contact" variant="primary" className="rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-wider bg-emerald-500 hover:bg-emerald-600 border-none w-full sm:w-auto shadow-md">
+            <Button href="/contact" variant="primary" className="rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-wider bg-sky-500 hover:bg-sky-600 border-none w-full sm:w-auto shadow-md">
               Partner With Multivista
             </Button>
             <Button href="#philosophy" variant="secondary" className="rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-wider border-white/20 text-white hover:bg-white/10 w-full sm:w-auto">
@@ -1070,6 +1177,70 @@ export function Sustainability() {
           </div>
         </div>
       </section>
+
+      {/* Modal Popup Preview */}
+      <AnimatePresence>
+        {activeReport && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 select-none">
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveReport(null)}
+              className="absolute inset-0 bg-deep-navy/60 backdrop-blur-sm"
+            />
+
+            {/* Modal box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 bg-white w-full max-w-5xl h-[82vh] md:h-[85vh] rounded-[24px] shadow-2xl border border-slate-150 overflow-hidden flex flex-col select-text"
+            >
+              {/* Modal header */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                <div>
+                  <h3 className="text-lg font-bold text-deep-navy font-heading">
+                    {activeReport.title}
+                  </h3>
+                  <p className="text-xs text-slate-450 font-sans tracking-wide uppercase font-medium">
+                    {activeReport.subtitle}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={activeReport.pdfPath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-xl text-slate-400 hover:text-sky-600 hover:bg-slate-100 transition-colors"
+                    title="Open in new tab"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                  <button
+                    onClick={() => setActiveReport(null)}
+                    className="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-slate-100 transition-colors cursor-pointer"
+                    title="Close preview"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal PDF iframe */}
+              <div className="flex-1 w-full h-full bg-slate-50">
+                <iframe
+                  src={`${activeReport.pdfPath}#toolbar=1&navpanes=0`}
+                  className="w-full h-full border-none"
+                  title={activeReport.title}
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { 
-  Cpu, 
-  Printer, 
-  Layers, 
-  Truck, 
-  Sun, 
-  Zap, 
-  Activity, 
-  Maximize2, 
-  ShieldCheck, 
+import {
+  Cpu,
+  Printer,
+  Layers,
+  Truck,
+  Sun,
+  Zap,
+  Activity,
+  Maximize2,
+  ShieldCheck,
   ArrowRight,
   TrendingUp,
   Workflow
@@ -116,7 +116,7 @@ export function Infrastructure() {
 
   return (
     <div className="bg-white min-h-screen">
-      
+
       {/* SECTION 01: HERO HEADER */}
       <section className="relative min-h-[50vh] flex items-center justify-center bg-blueprint-grid bg-white py-24 md:py-32 border-b border-gray-200/50 overflow-hidden">
         {/* Radial graphic lights */}
@@ -131,7 +131,7 @@ export function Infrastructure() {
             World-Class Printing Infrastructure
           </h1>
           <p className="text-lg md:text-xl text-gray-600 font-sans font-light leading-relaxed max-w-3xl mx-auto">
-            Spanning over a state-of-the-art 100,000+ square foot integrated manufacturing plant in Chennai, India, 
+            Spanning over a state-of-the-art 100,000+ square foot integrated manufacturing plant in Chennai, India,
             Multivista combines high-speed offset printing, automation color diagnostics, and automated post-press finishing.
           </p>
         </div>
@@ -168,7 +168,7 @@ export function Infrastructure() {
       {/* SECTION 03: INTERACTIVE SHOWCASE TABS */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/10 px-2.5 py-1 rounded-md inline-block mb-3">
               FACILITY STAGES
@@ -190,11 +190,10 @@ export function Infrastructure() {
                 <button
                   key={sec.id}
                   onClick={() => setActiveTab(sec.id)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${
-                    isActive 
-                      ? "bg-deep-navy text-white shadow-lg scale-105" 
+                  className={`flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${isActive
+                      ? "bg-deep-navy text-white shadow-lg scale-105"
                       : "bg-light-gray text-gray-600 border border-gray-200/50 hover:bg-gray-100 hover:text-deep-navy"
-                  }`}
+                    }`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{sec.title.split(" & ")[0].split(" (")[0]}</span>
@@ -256,12 +255,12 @@ export function Infrastructure() {
                 <div className="lg:col-span-6 relative">
                   {/* Decorative frame */}
                   <div className="absolute -inset-4 border border-dashed border-gray-200 rounded-3xl pointer-events-none z-0" />
-                  
+
                   <div className="relative group rounded-3xl overflow-hidden shadow-2xl aspect-[1.4/1] bg-gray-50 z-10">
-                    <img 
-                      src={sec.image} 
-                      alt={sec.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    <img
+                      src={sec.image}
+                      alt={sec.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/35 via-transparent to-transparent opacity-60 pointer-events-none" />
                   </div>
@@ -277,7 +276,7 @@ export function Infrastructure() {
       <section className="relative py-24 md:py-32 bg-deep-navy text-white overflow-hidden">
         {/* Abstract vector backgrounds */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,87,184,0.15),transparent_60%)] pointer-events-none" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
           <div className="p-3 rounded-full bg-emerald-500/10 text-emerald-400 w-fit mx-auto border border-emerald-500/20 mb-2 animate-pulse">
             <Workflow className="w-6 h-6" />
@@ -286,7 +285,7 @@ export function Infrastructure() {
             Clean Energy Infrastructure
           </h2>
           <p className="text-base md:text-lg text-gray-300 font-sans font-light leading-relaxed max-w-2xl mx-auto">
-            Our Chennai production facilities are powered by integrated high-capacity rooftop solar arrays. 
+            Our Chennai production facilities are powered by integrated high-capacity rooftop solar arrays.
             We combine manufacturing scalability with strict environmental governance.
           </p>
           <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center">

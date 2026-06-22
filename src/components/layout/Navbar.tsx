@@ -53,6 +53,16 @@ export function Navbar() {
 
   const isDarkHero = location.pathname === "/sustainability";
 
+  const getLinkClass = (href: string, hasChildren = false) => {
+    const isActive = location.pathname === href || (hasChildren && location.pathname.startsWith(href));
+    return cn(
+      "text-sm font-semibold tracking-wide transition-colors duration-200",
+      isScrolled || !isDarkHero
+        ? isActive ? "text-royal-blue" : "text-navy-900 hover:text-brand-blue"
+        : isActive ? "text-gold-accent" : "text-white/90 hover:text-white"
+    );
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -117,7 +127,7 @@ export function Navbar() {
                   <Link
                     to={item.href}
                     className={cn(
-                      textClass,
+                      getLinkClass(item.href, true),
                       "flex items-center gap-1 cursor-pointer"
                     )}
                   >
@@ -187,7 +197,7 @@ export function Navbar() {
             }
 
             return (
-              <Link key={item.name} to={item.href} className={textClass}>
+              <Link key={item.name} to={item.href} className={getLinkClass(item.href)}>
                 {item.name}
               </Link>
             );
@@ -236,13 +246,19 @@ export function Navbar() {
                 <div className="-my-6 divide-y divide-white/10">
                   <div className="space-y-2 py-6">
                     {navigation.map((item) => {
+                      const isActive = location.pathname === item.href || (item.children && location.pathname.startsWith(item.href));
                       if (item.children) {
                         return (
                           <div key={item.name} className="space-y-1">
                             <button
                               type="button"
                               onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                              className="-mx-3 flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-200 hover:text-white hover:bg-white/5 transition-colors"
+                              className={cn(
+                                "-mx-3 flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-semibold leading-7 transition-colors",
+                                isActive 
+                                  ? "text-gold-accent bg-white/5" 
+                                  : "text-gray-200 hover:text-white hover:bg-white/5"
+                              )}
                             >
                               <span>{item.name}</span>
                               <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 text-gray-400", mobileProductsOpen && "rotate-180")} />
@@ -262,23 +278,36 @@ export function Navbar() {
                                       setMobileMenuOpen(false);
                                       setMobileProductsOpen(false);
                                     }}
-                                    className="block rounded-lg py-2 px-3 text-sm font-semibold text-brand-blue hover:text-white hover:bg-white/5 transition-colors"
+                                    className={cn(
+                                      "block rounded-lg py-2 px-3 text-sm font-semibold transition-colors",
+                                      location.pathname === item.href 
+                                        ? "text-gold-accent" 
+                                        : "text-brand-blue hover:text-white hover:bg-white/5"
+                                    )}
                                   >
                                     Capabilities Overview
                                   </Link>
-                                  {item.children.map((child) => (
-                                    <Link
-                                      key={child.name}
-                                      to={child.href}
-                                      onClick={() => {
-                                        setMobileMenuOpen(false);
-                                        setMobileProductsOpen(false);
-                                      }}
-                                      className="block rounded-lg py-2 px-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                                    >
-                                      {child.name}
-                                    </Link>
-                                  ))}
+                                  {item.children.map((child) => {
+                                    const isChildActive = location.pathname + location.hash === child.href;
+                                    return (
+                                      <Link
+                                        key={child.name}
+                                        to={child.href}
+                                        onClick={() => {
+                                          setMobileMenuOpen(false);
+                                          setMobileProductsOpen(false);
+                                        }}
+                                        className={cn(
+                                          "block rounded-lg py-2 px-3 text-sm transition-colors",
+                                          isChildActive 
+                                            ? "text-gold-accent bg-white/5" 
+                                            : "text-gray-300 hover:text-white hover:bg-white/5"
+                                        )}
+                                      >
+                                        {child.name}
+                                      </Link>
+                                    );
+                                  })}
                                 </motion.div>
                               )}
                             </AnimatePresence>
@@ -290,7 +319,12 @@ export function Navbar() {
                         <Link
                           key={item.name}
                           to={item.href}
-                          className="-mx-3 block rounded-lg px-3 py-3.5 text-base font-semibold leading-7 text-gray-200 hover:text-white hover:bg-white/5 transition-colors"
+                          className={cn(
+                            "-mx-3 block rounded-lg px-3 py-3.5 text-base font-semibold leading-7 transition-colors",
+                            isActive 
+                              ? "text-gold-accent bg-white/5" 
+                              : "text-gray-200 hover:text-white hover:bg-white/5"
+                          )}
                         >
                           {item.name}
                         </Link>

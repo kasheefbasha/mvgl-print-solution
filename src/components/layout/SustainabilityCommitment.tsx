@@ -43,7 +43,7 @@ export function SustainabilityCommitment() {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-emerald-300/10 blur-[1px]"
+            className="absolute rounded-full bg-sky-300/10 blur-[1px]"
             style={{
               width: Math.random() * 8 + 4,
               height: Math.random() * 8 + 4,
@@ -76,7 +76,7 @@ export function SustainabilityCommitment() {
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8 leading-[1.1] font-heading">
               Creating Books. <br />
-              <span className="text-emerald-300">Protecting Tomorrow.</span>
+              <span className="text-sky-300">Protecting Tomorrow.</span>
             </h2>
             <div className="space-y-4 text-gray-200 font-sans text-sm md:text-base font-light leading-relaxed">
               <p>
@@ -107,9 +107,9 @@ export function SustainabilityCommitment() {
             {/* Card 1: Responsible Sourcing */}
             <motion.div 
               style={{ y: card1Y }}
-              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[-24px] transition-all hover:border-emerald-300/30 hover:bg-white/15 duration-300"
+              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[-24px] transition-all hover:border-sky-300/30 hover:bg-white/15 duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center mb-4 border border-emerald-500/20">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-300 flex items-center justify-center mb-4 border border-sky-500/20">
                 <Leaf className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-white font-heading mb-2">
@@ -123,9 +123,9 @@ export function SustainabilityCommitment() {
             {/* Card 2: Resource Efficiency */}
             <motion.div 
               style={{ y: card2Y }}
-              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[0px] transition-all hover:border-emerald-300/30 hover:bg-white/15 duration-300"
+              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[0px] transition-all hover:border-sky-300/30 hover:bg-white/15 duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center mb-4 border border-emerald-500/20">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-300 flex items-center justify-center mb-4 border border-sky-500/20">
                 <Recycle className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-white font-heading mb-2">
@@ -139,9 +139,9 @@ export function SustainabilityCommitment() {
             {/* Card 3: Carbon Reduction */}
             <motion.div 
               style={{ y: card3Y }}
-              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[24px] transition-all hover:border-emerald-300/30 hover:bg-white/15 duration-300"
+              className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg p-6 rounded-[20px] md:translate-y-[24px] transition-all hover:border-sky-300/30 hover:bg-white/15 duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center mb-4 border border-emerald-500/20">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-300 flex items-center justify-center mb-4 border border-sky-500/20">
                 <Globe className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-white font-heading mb-2">

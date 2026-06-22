@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { 
-  BookOpen, 
-  ChevronRight, 
+import {
+  BookOpen,
+  ChevronRight,
   ChevronLeft,
   ArrowRight,
   ShieldCheck,
@@ -122,22 +122,51 @@ const differentiators = [
   { title: "World-class quality systems", desc: "Adhering to strict global publisher guidelines and environmental loops.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600" }
 ];
 
-// World Regions
+// World Regions with paths aligned to the 99x50 dotted map
 const globalRegions = [
-  { name: "North America", x: 22, y: 35, routePath: "M 68,36.7 Q 45,23.3 22,23.3" },
-  { name: "Europe & UK", x: 48, y: 30, routePath: "M 68,36.7 Q 58,21.3 48,20" },
-  { name: "Middle East", x: 58, y: 46, routePath: "M 68,36.7 Q 63,32 58,30.7" },
-  { name: "Africa", x: 50, y: 65, routePath: "M 68,36.7 Q 58,40 50,43.3" },
-  { name: "Asia-Pacific (HQ)", x: 68, y: 55, routePath: "" },
-  { name: "Australia", x: 88, y: 80, routePath: "M 68,36.7 Q 78,46.7 88,53.3" }
+  { name: "North America", routePaths: ["M 73.74,52 Q 49,30 24.24,34"] },
+  { name: "Europe & UK", routePaths: ["M 73.74,52 Q 60,30 49.49,24"] },
+  { name: "Middle East", routePaths: ["M 73.74,52 Q 70,46 66.67,44"] },
+  { name: "Africa", routePaths: ["M 73.74,52 Q 68,64 58.59,76"] },
+  { name: "Asia-Pacific (HQ)", routePaths: ["M 73.74,52 Q 77,56 80.81,60", "M 73.74,52 Q 78,58 81.82,64"] },
+  { name: "Australia", routePaths: ["M 73.74,52 Q 84,67 94.95,82"] }
 ];
+
+// All 22 pins matching the user's screenshot
+const mapPins = [
+  { name: "Canada", x: 27.27, y: 30, region: "North America" },
+  { name: "US Midwest", x: 24.24, y: 34, region: "North America" },
+  { name: "UK", x: 49.49, y: 24, region: "Europe & UK" },
+  { name: "Northern Europe", x: 55.56, y: 16, region: "Europe & UK" },
+  { name: "Western Europe", x: 50.51, y: 28, region: "Europe & UK" },
+  { name: "Spain/Portugal", x: 48.48, y: 34, region: "Europe & UK" },
+  { name: "Italy/Southern Europe", x: 52.53, y: 30, region: "Europe & UK" },
+  { name: "Egypt/Cairo", x: 59.6, y: 42, region: "Middle East" },
+  { name: "Persian Gulf", x: 66.67, y: 44, region: "Middle East" },
+  { name: "Saudi Arabia", x: 61.62, y: 48, region: "Middle East" },
+  { name: "Ghana/Accra", x: 49.49, y: 56, region: "Africa" },
+  { name: "Nigeria/Lagos", x: 50.51, y: 56, region: "Africa" },
+  { name: "Nigeria/Abuja", x: 52.53, y: 54, region: "Africa" },
+  { name: "Cameroon", x: 52.53, y: 58, region: "Africa" },
+  { name: "Nairobi", x: 60.61, y: 60, region: "Africa" },
+  { name: "South Africa (Johannesburg)", x: 58.59, y: 76, region: "Africa" },
+  { name: "South Africa (Cape Town)", x: 55.56, y: 82, region: "Africa" },
+  { name: "South Africa (Durban)", x: 59.6, y: 78, region: "Africa" },
+  { name: "South Africa (Port Elizabeth)", x: 57.58, y: 82, region: "Africa" },
+  { name: "India (Chennai)", x: 73.74, y: 52, region: "Asia-Pacific (HQ)", isHQ: true },
+  { name: "Singapore", x: 80.81, y: 60, region: "Asia-Pacific (HQ)" },
+  { name: "Kuala Lumpur", x: 79.8, y: 58, region: "Asia-Pacific (HQ)" },
+  { name: "Jakarta", x: 81.82, y: 64, region: "Asia-Pacific (HQ)" },
+  { name: "Sydney", x: 94.95, y: 82, region: "Australia" }
+];
+
 
 export function About() {
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0);
   const [activeRegion, setActiveRegion] = useState<string | null>("Asia-Pacific (HQ)");
   const [scrollProgress, setScrollProgress] = useState(0);
-  
+
   const valuesRef = useRef<HTMLDivElement>(null);
   const milestoneSectionRef = useRef<HTMLDivElement>(null);
   const [milestoneProgress, setMilestoneProgress] = useState(0);
@@ -162,15 +191,15 @@ export function About() {
         const rect = milestoneSectionRef.current.getBoundingClientRect();
         const elementHeight = rect.height;
         const viewportHeight = window.innerHeight;
-        
+
         const startOffset = viewportHeight * 0.8;
         const endOffset = viewportHeight * 0.2;
-        
+
         const totalScrollable = elementHeight + startOffset - endOffset;
         const scrolledAmount = startOffset - rect.top;
         const rawProgress = scrolledAmount / totalScrollable;
         const progress = Math.min(Math.max(rawProgress, 0), 1);
-        
+
         setMilestoneProgress(progress);
       }
 
@@ -194,11 +223,11 @@ export function About() {
         setActiveStoryIndex(closestIdx);
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     handleScroll();
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -234,7 +263,7 @@ export function About() {
 
   return (
     <div className="bg-white relative select-text overflow-x-clip">
-      
+
       {/* Inline styles for custom animations */}
       <style>
         {`
@@ -272,12 +301,12 @@ export function About() {
 
       {/* SECTION 01: ABOUT HERO */}
       <section className="relative min-h-[90vh] flex items-center bg-blueprint-grid bg-white py-32">
-        
+
         {/* Absolute Background image overlay */}
         <div className="absolute inset-0 z-0 opacity-[0.08]">
-          <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000" 
-            alt="Multivista Manufacturing Facility" 
+          <img
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000"
+            alt="Multivista Manufacturing Facility"
             className="w-full h-full object-cover"
           />
         </div>
@@ -307,9 +336,9 @@ export function About() {
       {/* SECTION 02: THE MULTIVISTA STORY (Split Screen Journey) */}
       <section id="story" className="relative py-24 md:py-32 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            
+
             {/* Left Column: Outer Grid Item (stretches to fill grid height track) */}
             <div className="lg:col-span-5">
               {/* Sticky Timeline container (slides inside the column track) */}
@@ -332,9 +361,9 @@ export function About() {
                   <div className="absolute left-[18px] top-[36px] bottom-[36px] w-[2px] pointer-events-none">
                     {/* Background Track */}
                     <div className="absolute inset-0 bg-slate-100 rounded-full" />
-                    
+
                     {/* Active Progress */}
-                    <div 
+                    <div
                       className="absolute top-0 left-0 w-full bg-royal-blue rounded-full transition-all duration-500 ease-out"
                       style={{
                         height: `${(activeStoryIndex / (evolutionJourney.length - 1)) * 100}%`
@@ -353,23 +382,23 @@ export function About() {
                             onClick={() => scrollToEra(idx)}
                             className={cn(
                               "absolute left-[18px] -translate-x-1/2 w-4.5 h-4.5 rounded-full border-2 bg-white cursor-pointer transition-all duration-300 flex items-center justify-center z-20 outline-none",
-                              isActive 
-                                ? "border-royal-blue bg-royal-blue scale-110 ring-4 ring-royal-blue/15 shadow-sm" 
+                              isActive
+                                ? "border-royal-blue bg-royal-blue scale-110 ring-4 ring-royal-blue/15 shadow-sm"
                                 : "border-slate-200 hover:border-slate-400"
                             )}
                             aria-label={`Go to ${item.phase}`}
                           >
                             {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
                           </button>
-                          
+
                           {/* Button card */}
                           <button
                             type="button"
                             onClick={() => scrollToEra(idx)}
                             className={cn(
                               "w-full text-left ml-9 p-4 rounded-xl border transition-all duration-300 flex items-center justify-between group cursor-pointer",
-                              isActive 
-                                ? "bg-royal-blue/[0.02] border-royal-blue/30 shadow-md shadow-royal-blue/5" 
+                              isActive
+                                ? "bg-royal-blue/[0.02] border-royal-blue/30 shadow-md shadow-royal-blue/5"
                                 : "bg-white border-gray-100 hover:border-gray-200"
                             )}
                           >
@@ -420,17 +449,17 @@ export function About() {
                       <div className="absolute inset-0 bg-blueprint-grid opacity-10 pointer-events-none z-10" />
                       <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/40 pointer-events-none z-10" />
                       <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-white/40 pointer-events-none z-10" />
-                      
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
+
+                      <img
+                        src={item.image}
+                        alt={item.title}
                         className={cn(
                           "w-full h-full object-cover transition-transform duration-1000 ease-out",
                           isActive ? "scale-105" : "scale-100"
-                        )} 
+                        )}
                       />
                     </div>
-                    
+
                     <div className="space-y-3 px-4 transition-all duration-700">
                       <span className={cn(
                         "text-xs font-bold tracking-widest font-heading uppercase transition-colors duration-500",
@@ -464,7 +493,7 @@ export function About() {
 
       {/* SECTION 03: PURPOSE • VISION • MISSION (Interconnected Glass Pillars) */}
       <section className="relative py-28 bg-[#F8FAFC] overflow-hidden">
-        
+
         {/* Connected vector backdrop */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40" xmlns="http://www.w3.org/2000/svg">
           <path d="M 150,150 L 500,200 L 900,100" fill="none" stroke="#0057B8" strokeWidth="1" strokeDasharray="3 3" />
@@ -472,7 +501,7 @@ export function About() {
         </svg>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto mb-20">
             <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/15 px-2.5 py-1 rounded-full inline-block">
               FOUNDATIONAL PILLARS
@@ -483,7 +512,7 @@ export function About() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch relative">
-            
+
             {/* Panel 1: Purpose */}
             <div className="p-8 rounded-[24px] border border-white/30 bg-white/70 backdrop-blur-md shadow-lg flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300 relative group">
               <div className="absolute top-4 right-4 text-royal-blue/20 font-heading text-4xl font-bold group-hover:text-royal-blue/30 transition-colors">
@@ -546,9 +575,9 @@ export function About() {
       {/* SECTION 04: OUR VALUES (Horizontal Scroll Reveal) */}
       <section className="relative py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           {/* Swipeable Values cards track */}
-          <div 
+          <div
             ref={valuesRef}
             onScroll={handleValuesScroll}
             className="flex gap-6 items-start overflow-x-auto scrollbar-none snap-x snap-mandatory pb-8 px-2 select-text"
@@ -572,16 +601,16 @@ export function About() {
             {values.map((v) => {
               const Icon = v.icon;
               return (
-                <div 
+                <div
                   key={v.title}
                   className="w-[18rem] md:w-[20rem] shrink-0 snap-center rounded-3xl overflow-hidden relative aspect-[4/5] shadow-sm hover:shadow-xl transition-all duration-300 group border border-slate-100"
                 >
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0">
-                    <img 
-                      src={v.image} 
-                      alt={v.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" 
+                    <img
+                      src={v.image}
+                      alt={v.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                     />
                     {/* Dark gradient overlay for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/95 via-deep-navy/50 to-transparent z-10" />
@@ -618,7 +647,7 @@ export function About() {
           <div className="mt-8 flex items-center justify-between gap-8">
             {/* Progress bar */}
             <div className="flex-grow max-w-md h-[3px] bg-slate-100 rounded-full relative overflow-hidden">
-              <div 
+              <div
                 className="absolute left-0 top-0 h-full bg-royal-blue rounded-full transition-all duration-300 ease-out"
                 style={{
                   width: `${(scrollProgress * 100).toFixed(1)}%`
@@ -628,7 +657,7 @@ export function About() {
 
             {/* Scroll navigation arrows */}
             <div className="flex gap-2">
-              <button 
+              <button
                 type="button"
                 onClick={() => scrollValues("left")}
                 className="w-10 h-10 rounded-lg bg-royal-blue hover:bg-royal-blue/90 text-white transition-colors flex items-center justify-center cursor-pointer shadow-sm outline-none"
@@ -636,7 +665,7 @@ export function About() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <button 
+              <button
                 type="button"
                 onClick={() => scrollValues("right")}
                 className="w-10 h-10 rounded-lg bg-royal-blue hover:bg-royal-blue/90 text-white transition-colors flex items-center justify-center cursor-pointer shadow-sm outline-none"
@@ -653,7 +682,7 @@ export function About() {
       {/* SECTION 05: THE MULTIVISTA JOURNEY (Interactive Vertical Scroll-Spy Timeline) */}
       <section className="relative py-24 bg-white select-text">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/15 px-2.5 py-1 rounded-full inline-block">
               MILESTONES
@@ -669,7 +698,7 @@ export function About() {
           <div className="relative mt-12 max-w-4xl mx-auto" ref={milestoneSectionRef}>
             {/* Continuous track line */}
             <div className="absolute left-[104px] md:left-[152px] top-8 bottom-8 w-[2px] bg-slate-100 pointer-events-none">
-              <div 
+              <div
                 className="absolute top-0 left-0 w-full bg-royal-blue rounded-full transition-all duration-300 ease-out origin-top"
                 style={{
                   height: `${milestoneProgress * 100}%`
@@ -682,7 +711,7 @@ export function About() {
               {milestones.map((m, idx) => {
                 const threshold = idx / (milestones.length - 1);
                 const isActive = milestoneProgress >= threshold;
-                
+
                 return (
                   <div key={m.year} className="flex items-start">
                     {/* Year */}
@@ -699,8 +728,8 @@ export function About() {
                     <div className="w-12 md:w-12 flex justify-center shrink-0 relative self-stretch pt-3">
                       <div className={cn(
                         "w-5 h-5 rounded-full border bg-white transition-all duration-500 flex items-center justify-center z-10",
-                        isActive 
-                          ? "border-royal-blue bg-royal-blue ring-4 ring-royal-blue/15 shadow-sm" 
+                        isActive
+                          ? "border-royal-blue bg-royal-blue ring-4 ring-royal-blue/15 shadow-sm"
                           : "border-slate-200"
                       )}>
                         {isActive && (
@@ -713,14 +742,14 @@ export function About() {
                     <div className="flex-grow pb-10">
                       <div className={cn(
                         "p-6 rounded-2xl border transition-all duration-500 text-left bg-white",
-                        isActive 
-                          ? "border-royal-blue/20 shadow-md shadow-royal-blue/[0.02] bg-gradient-to-br from-white to-royal-blue/[0.01]" 
+                        isActive
+                          ? "border-royal-blue/20 shadow-md shadow-royal-blue/[0.02] bg-gradient-to-br from-white to-royal-blue/[0.01]"
                           : "border-slate-100 hover:border-slate-200 shadow-sm"
                       )}>
                         <span className={cn(
                           "text-[9px] font-bold tracking-widest font-heading uppercase px-2.5 py-1 rounded-md inline-block mb-3 transition-colors duration-500",
-                          isActive 
-                            ? "bg-royal-blue/5 text-royal-blue border border-royal-blue/10" 
+                          isActive
+                            ? "bg-royal-blue/5 text-royal-blue border border-royal-blue/10"
                             : "bg-slate-50 text-gray-400 border border-slate-100"
                         )}>
                           Milestone {idx + 1}
@@ -751,7 +780,7 @@ export function About() {
       {/* SECTION 06: BY THE NUMBERS (Command Dashboard) */}
       <section className="relative py-24 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto mb-20">
             <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/15 px-2.5 py-1 rounded-full inline-block">
               BENCHMARKS
@@ -763,7 +792,7 @@ export function About() {
 
           {/* Command Dashboard structure */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
-            
+
             {/* Stat Block 1: Scale */}
             <div className="lg:col-span-5 bg-gradient-to-br from-white to-slate-50 border border-gray-200/60 rounded-3xl p-8 shadow-sm hover:shadow-md hover:border-royal-blue/30 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between min-h-[300px]">
               {/* Micro-grid overlay */}
@@ -900,7 +929,7 @@ export function About() {
       {/* SECTION 07: WHAT SETS US APART (Differentiators) */}
       <section className="relative py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto mb-20">
             <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/15 px-2.5 py-1 rounded-full inline-block">
               DIFFERENTIATORS
@@ -915,7 +944,7 @@ export function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {differentiators.map((diff) => (
-              <div 
+              <div
                 key={diff.title}
                 className="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-150 bg-slate-50 min-h-[320px] flex flex-col justify-end"
               >
@@ -924,7 +953,7 @@ export function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-deep-navy/40 to-transparent z-10" />
                   <img src={diff.image} alt={diff.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
-                
+
                 {/* Content details overlay */}
                 <div className="relative z-20 p-8 text-white text-left space-y-3">
                   <h3 className="text-xl md:text-2xl font-bold font-heading text-white">
@@ -944,20 +973,20 @@ export function About() {
       {/* SECTION 08: LEADERSHIP MESSAGE (MD Letter) */}
       <section className="relative py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left: MD Environmental Portrait */}
             <div className="lg:col-span-5 relative">
               <div className="relative group rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border border-gray-200/50 bg-slate-50">
-                <img 
-                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" 
-                  alt="Managing Director" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103" 
+                <img
+                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800"
+                  alt="Managing Director"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                 />
                 <div className="absolute bottom-6 left-6 right-6 bg-deep-navy/95 border border-white/10 p-5 rounded-2xl text-left text-white shadow-xl z-20">
                   <h4 className="text-base font-bold text-white font-heading">
-                    Mr. Sunil Abraham
+                    Mr. Karthik Narayan
                   </h4>
                   <p className="text-xs text-gold-accent font-sans mt-0.5">
                     Managing Director — Multivista Printers
@@ -971,7 +1000,7 @@ export function About() {
               <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase bg-royal-blue/5 border border-royal-blue/15 px-2.5 py-1 rounded-full inline-block">
                 LEADERSHIP CORE
               </span>
-              
+
               <h3 className="text-3xl md:text-4xl font-bold text-deep-navy font-heading leading-tight">
                 A Message from Our Leadership
               </h3>
@@ -992,16 +1021,16 @@ export function About() {
               <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
                 <div>
                   <h4 className="text-sm font-bold text-deep-navy font-heading">
-                    Sunil Abraham
+                    Karthik Narayan
                   </h4>
                   <p className="text-[10px] text-gray-400 font-sans uppercase tracking-wider">
                     Managing Director
                   </p>
                 </div>
-                
+
                 {/* Simulated luxury signature script */}
                 <div className="font-serif italic text-2xl font-semibold text-royal-blue opacity-85 select-none pr-8">
-                  Sunil Abraham
+                  Karthik Narayan
                 </div>
               </div>
             </div>
@@ -1014,9 +1043,9 @@ export function About() {
       {/* SECTION 09: GLOBAL MANUFACTURING PARTNER (Interactive Map) */}
       <section className="relative py-24 bg-white select-text">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Column: Descriptions */}
             <div className="lg:col-span-5 space-y-6 text-left">
               <span className="text-[9px] font-bold text-royal-blue tracking-widest font-heading uppercase">
@@ -1028,7 +1057,7 @@ export function About() {
               <p className="text-sm md:text-base text-gray-500 font-sans font-light leading-relaxed">
                 Publishing knows no boundaries. Neither do we. Our work begins in our manufacturing facility in Chennai but reaches readers around the world.
               </p>
-              
+
               <div className="border-t border-gray-100 pt-6">
                 <h4 className="text-[10px] font-bold text-deep-navy font-heading uppercase tracking-widest mb-3">
                   Export Regions
@@ -1053,103 +1082,63 @@ export function About() {
               </div>
             </div>
 
-            {/* Right Column: World Map SVG */}
+            {/* Right Column: World Map SVG backdrop + interactive overlay */}
             <div className="lg:col-span-7 flex justify-center items-center">
-              <div className="relative w-full max-w-[500px] aspect-[1.5/1]">
-                
-                {/* SVG Map backdrop */}
-                <svg viewBox="0 0 100 66.7" className="absolute inset-0 w-full h-full pointer-events-none z-0">
-                  <defs>
-                    <linearGradient id="map-continent-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#0057B8" stopOpacity="0.08" />
-                      <stop offset="100%" stopColor="#0EA5E9" stopOpacity="0.02" />
-                    </linearGradient>
-                    <pattern id="dot-grid" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-                      <circle cx="2" cy="2" r="0.4" fill="#CBD5E1" fillOpacity="0.6" />
-                    </pattern>
-                  </defs>
-                  
-                  {/* Backdrop patterns */}
-                  <rect width="100" height="66.7" fill="url(#dot-grid)" />
+              <div 
+                className="relative w-full max-w-[500px] select-none"
+                style={{ aspectRatio: "99/50" }}
+              >
+                {/* Dotted Map Backdrop Image */}
+                <img
+                  src="/Images/world-dotted-bg.svg"
+                  alt="Dotted World Map"
+                  className="absolute inset-0 w-full h-full object-contain pointer-events-none opacity-80"
+                />
 
-                  {/* Continent paths */}
-                  <g fill="url(#map-continent-gradient)" stroke="#E2E8F0" strokeWidth="0.25" strokeLinejoin="round" opacity="0.85">
-                    {/* North America */}
-                    <path d="M 5,18 C 10,12 18,8 25,10 C 28,11 31,14 34,14 C 36,18 36,22 34,25 C 32,27 33,31 31,34 C 28,38 25,41 23,45 C 22,43 21,38 20,36 C 18,34 16,33 14,34 C 11,35 9,30 8,26 C 7,22 4,20 5,18 Z" />
-                    {/* Greenland */}
-                    <path d="M 33,6 C 36,5 40,6 40,9 C 39,12 34,15 31,13 C 30,11 31,8 33,6 Z" />
-                    {/* South America */}
-                    <path d="M 23,45 C 26,48 29,50 30,53 C 30,58 27,62 24,65 C 23,65 22,60 21,56 C 20,52 19,48 23,45 Z" />
-                    {/* Africa */}
-                    <path d="M 44,35 C 38,39 36,46 42,52 C 45,56 47,60 49,63 C 50,63 51,58 53,54 C 55,48 54,44 52,42 C 50,41 49,40 44,35 Z" />
-                    {/* Eurasia */}
-                    <path d="M 40,26 C 42,18 48,12 55,14 C 65,12 80,10 92,14 C 95,18 97,25 94,32 C 92,36 88,40 84,43 C 82,45 80,48 76,52 C 73,50 70,48 68,44 C 64,43 60,40 56,41 C 52,40 46,34 40,26 Z" />
-                    {/* Australia */}
-                    <path d="M 80,52 C 84,50 88,52 90,54 C 90,58 86,62 82,62 C 79,62 77,57 80,52 Z" />
-                    
-                    {/* Islands */}
-                    {/* Madagascar */}
-                    <circle cx="56" cy="58" r="0.75" />
-                    {/* Great Britain */}
-                    <circle cx="39" cy="18" r="0.75" />
-                    {/* Ireland */}
-                    <circle cx="37" cy="19" r="0.5" />
-                    {/* Japan */}
-                    <path d="M 94,24 C 95,26 95,29 93,31" fill="none" stroke="url(#map-continent-gradient)" strokeWidth="0.5" />
-                  </g>
 
-                  {/* Curving routing lines from Chennai to target */}
-                  {globalRegions.map((reg) => {
-                    if (!reg.routePath || activeRegion !== reg.name) return null;
-                    return (
-                      <path
-                        key={reg.name}
-                        d={reg.routePath}
-                        fill="none"
-                        stroke="#0057B8"
-                        strokeWidth="0.5"
-                        strokeDasharray="2 1"
-                        className="animate-[flow-pattern_6s_linear_infinite]"
-                      />
-                    );
-                  })}
-                </svg>
+                {/* Render All 22 Pins */}
+                {mapPins.map((pin) => {
+                  const isPinInActiveRegion = activeRegion === pin.region;
+                  const isHighlighted = isPinInActiveRegion || (pin.isHQ && activeRegion === "Asia-Pacific (HQ)");
 
-                {/* Chennai India Headquarters (HQ) point */}
-                <div 
-                  style={{ left: "68%", top: "55%" }} 
-                  className="absolute -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center"
-                >
-                  <div className="w-4.5 h-4.5 rounded-full bg-royal-blue flex items-center justify-center animate-glow">
-                    <div className="w-2 h-2 rounded-full bg-white" />
-                  </div>
-                  <span className="mt-1 text-[7px] font-bold text-deep-navy tracking-widest font-heading bg-white border border-royal-blue/20 px-1 py-0.5 rounded shadow-sm">
-                    HQ HUB
-                  </span>
-                </div>
-
-                {/* Global Region Points */}
-                {globalRegions.map((reg) => {
-                  if (reg.name === "Asia-Pacific (HQ)") return null;
-                  const isActive = activeRegion === reg.name;
                   return (
                     <button
-                      key={reg.name}
+                      key={pin.name}
                       type="button"
-                      style={{ left: `${reg.x}%`, top: `${reg.y}%` }}
-                      onClick={() => setActiveRegion(reg.name)}
+                      style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
+                      onClick={() => setActiveRegion(pin.region)}
                       className={cn(
-                        "absolute -translate-x-1/2 -translate-y-1/2 z-10 w-4.5 h-4.5 rounded-full border bg-white flex items-center justify-center shadow-md cursor-pointer transition-all duration-300",
-                        isActive 
-                          ? "border-royal-blue ring-4 ring-royal-blue/15 bg-royal-blue scale-110" 
-                          : "border-gray-250 hover:border-gray-450"
+                        "group absolute -translate-x-1/2 -translate-y-1/2 z-20 rounded-full cursor-pointer transition-all duration-300 flex items-center justify-center",
+                        pin.isHQ
+                          ? "w-4 h-4 bg-royal-blue shadow-lg border border-white z-30 animate-glow"
+                          : isHighlighted
+                            ? "w-3 h-3 bg-royal-blue border border-white ring-4 ring-royal-blue/15 scale-110 z-25"
+                            : "w-2 h-2 bg-royal-blue/70 hover:bg-royal-blue hover:scale-110"
                       )}
-                      aria-label={reg.name}
+                      aria-label={pin.name}
                     >
-                      {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      {/* Inner white dot for highlighted or HQ pins */}
+                      {(pin.isHQ || isHighlighted) && (
+                        <div className="w-1 h-1 rounded-full bg-white" />
+                      )}
+
+                      {/* Tooltip on hover */}
+                      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:block whitespace-nowrap text-[8px] font-bold text-white bg-deep-navy px-1.5 py-0.5 rounded shadow-md z-30">
+                        {pin.name} {pin.isHQ && "(HQ)"}
+                      </span>
                     </button>
                   );
                 })}
+
+                {/* Headquarters label overlay */}
+                <div
+                  style={{ left: "73.74%", top: "52%" }}
+                  className="absolute -translate-x-1/2 translate-y-3.5 z-25 pointer-events-none"
+                >
+                  <span className="text-[7px] font-bold text-deep-navy tracking-widest font-heading bg-white/95 border border-royal-blue/20 px-1 py-0.5 rounded shadow-sm">
+                    HQ HUB
+                  </span>
+                </div>
 
               </div>
             </div>
@@ -1162,12 +1151,12 @@ export function About() {
 
       {/* SECTION 11: FINAL BRAND STATEMENT (Cinematic CTA) */}
       <section className="relative py-28 md:py-36 bg-gradient-to-br from-deep-navy via-navy-900 to-[#07172B] text-white overflow-hidden">
-        
+
         {/* Abstract page-turning visual vector lines backdrop */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-gold-accent dust-particle" />
           <div className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 rounded-full bg-royal-blue dust-particle" style={{ animationDelay: "-3s" }} />
-          
+
           <svg className="w-full h-full opacity-[0.06] select-none" xmlns="http://www.w3.org/2000/svg">
             <path d="M 0,150 C 150,50 300,250 450,150 C 600,50 750,250 900,150" fill="none" stroke="#FFFFFF" strokeWidth="1" strokeDasharray="4 4" />
             <path d="M 150,180 C 300,80 450,280 600,180 C 750,80 900,280 1050,180" fill="none" stroke="#FFFFFF" strokeWidth="1" strokeDasharray="3 3" />
