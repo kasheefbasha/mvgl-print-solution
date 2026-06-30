@@ -477,10 +477,11 @@ export function About() {
         {/* Parallax Background container */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30"
-            style={{ backgroundImage: `url('/Images/core_purpose_dark_bg.png')` }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80"
+            style={{ backgroundImage: `url('/Images/OCP1.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-sky-950/30 to-slate-950/95"></div>
+          {/* Soft overlay for text readability */}
+          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </div>
 
         {/* Subtle printing marks/grid paper background (inverted white lines for vibrant blue background) */}
@@ -495,7 +496,7 @@ export function About() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-950/80 border border-sky-800/50 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
               FOUNDATIONAL PILLARS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-4 leading-tight">
@@ -677,10 +678,11 @@ export function About() {
         {/* Parallax Background container */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30"
-            style={{ backgroundImage: `url('/Images/about_numbers_dark_bg.png')` }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80"
+            style={{ backgroundImage: `url('/Images/BTN1.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-sky-950/30 to-slate-950/95"></div>
+          {/* Soft overlay for text readability */}
+          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </div>
 
         {/* Subtle printing marks/grid paper background (inverted white lines for dark theme) */}
@@ -690,7 +692,7 @@ export function About() {
 
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-950/80 border border-sky-800/50 px-2.5 py-1 rounded-full inline-block mb-3">
+            <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md mb-3">
               BENCHMARKS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-4 mb-4 leading-tight">

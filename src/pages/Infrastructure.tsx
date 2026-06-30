@@ -66,34 +66,34 @@ const categories = [
 // Section 3: Featured Machinery Data
 const machines = [
   {
-    name: "Heidelberg Speedmaster 102",
-    desc: "High-performance 8-colour perfecting printing press.",
-    image: "/Images/heidelberg_speedmaster.png"
+    name: "Digital Print Inspection System",
+    desc: "Automated digital inspection system ensuring zero-defect printing and binding quality control.",
+    image: "/Machines Image/Digital Print Inspection System.JPG"
   },
   {
-    name: "Kodak Trendsetter 800",
-    desc: "Advanced Computer-to-Plate imaging system.",
-    image: "/Images/kodak_trendsetter.png"
+    name: "Freedom 5K Perfect Binder",
+    desc: "High-speed perfect binder for case-bound and softcover books with precise hot-melt gluing.",
+    image: "/Machines Image/Freedom 5K Perfect Binder.JPG"
   },
   {
-    name: "Muller Martini",
-    desc: "Industrial binding and book production system.",
-    image: "/Images/muller_martini.png"
+    name: "Paper Folding Machine",
+    desc: "Precision signature folding machine for automated pagination setups and high-speed signature folding.",
+    image: "/Machines Image/Paper Folding Machine.JPG"
   },
   {
-    name: "Horizon Folder",
-    desc: "Precision folding machine for commercial printing.",
-    image: "/Images/horizon_folder.png"
+    name: "RMGT 9 Series Sheetfed Offset Press",
+    desc: "Industry-leading multi-colour perfecting offset printing press for high-volume commercial runs.",
+    image: "/Machines Image/RMGT 9 Series Sheetfed Offset Printing Press.JPG"
   },
   {
-    name: "Sakurai Spot UV",
-    desc: "Premium finishing and coating technology.",
-    image: "/Images/sakurai_spot_uv.png"
+    name: "RMGT 928PF-6+CC+LED Press",
+    desc: "High-efficiency 6-color LED-UV printing press equipped with inline coater and LED instant curing.",
+    image: "/Machines Image/RMGT 928PF-6+CC+LED (6-color with Coater).png"
   },
   {
-    name: "Polar 115 Cutter",
-    desc: "High-precision paper cutting system.",
-    image: "/Images/polar_cutter.png"
+    name: "SMT Pick-and-Place Machine",
+    desc: "Industrial pick-and-place placement system for precision electronics manufacturing and assembly.",
+    image: "/Machines Image/SMT Pick-and-Place Machine.JPG"
   }
 ];
 
@@ -203,7 +203,7 @@ export function Infrastructure() {
       </section>
 
       {/* SECTION: MACHINERY AUTO-SCROLL SHOWCASE */}
-      <section className="relative py-20 bg-slate-50 border-b border-slate-200/50 overflow-hidden select-none">
+      <section className="relative py-20 bg-[#EEEEEE] border-b border-slate-200/50 overflow-hidden select-text">
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-print-grid opacity-15 pointer-events-none"></div>
 
@@ -218,11 +218,11 @@ export function Infrastructure() {
         </div>
 
         {/* Contained Slider Wrapper */}
-        <div className="relative max-w-6xl mx-auto rounded-[28px] overflow-hidden border border-slate-200/60 bg-white shadow-xl p-6 md:p-8">
+        <div className="relative max-w-6xl mx-auto overflow-hidden py-2">
           
-          {/* Edge Gradient Fades for a premium floating transition */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+          {/* Edge Gradient Fades for a premium floating transition (blending with section bg-[#EEEEEE]) */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#EEEEEE] via-[#EEEEEE]/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#EEEEEE] via-[#EEEEEE]/80 to-transparent z-10 pointer-events-none" />
 
           {/* Marquee track */}
           <div className="overflow-hidden w-full">
@@ -230,7 +230,7 @@ export function Infrastructure() {
               {[...machineImages, ...machineImages].map((img, index) => (
                 <div
                   key={index}
-                  className="relative shrink-0 w-[24rem] h-64 rounded-2xl overflow-hidden border border-slate-100 shadow-sm bg-slate-50 group hover:shadow-lg transition-all duration-300"
+                  className="relative shrink-0 w-[24rem] h-64 rounded-2xl overflow-hidden bg-slate-100 group shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   <img
                     src={img.path}
@@ -253,7 +253,63 @@ export function Infrastructure() {
         </div>
       </section>
 
-      {/* SECTION 2: PRODUCTION PIPELINE SHOWCASE */}
+      {/* SECTION 3: FEATURED MACHINERY */}
+      <section className="relative py-32 bg-slate-950 overflow-hidden border-y border-slate-900 select-text">
+        {/* Parallax Background container */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30"
+            style={{ backgroundImage: `url('/Images/featured_machinery_dark_bg.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-sky-950/20 to-slate-950/95"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-950/80 border border-sky-800/50 px-2.5 py-1 rounded-full inline-block mb-4">
+              HARDWARE ASSETS
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading leading-tight">
+              Featured Machinery
+            </h2>
+            <div className="w-12 h-1 bg-sky-500 mx-auto mt-4 rounded-full" />
+          </div>
+
+          {/* Simple grid showcasing key machines with large images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {machines.map((mac, index) => (
+              <motion.div
+                key={mac.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                className="group bg-slate-900/40 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:bg-slate-900/60 hover:border-sky-500/30 hover:translate-y-[-4px] transition-all duration-300 text-left flex flex-col h-full"
+              >
+                {/* Large Machine Image */}
+                <div className="h-60 w-full overflow-hidden bg-slate-950/50 relative border-b border-white/5">
+                  <img
+                    src={mac.image}
+                    alt={mac.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                {/* Text details */}
+                <div className="p-6 md:p-8 space-y-2 flex-grow">
+                  <h3 className="text-lg font-bold text-white font-heading group-hover:text-sky-300 transition-colors duration-300">
+                    {mac.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-slate-200 font-sans font-light leading-relaxed">
+                    {mac.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: INTEGRATED PRODUCTION STAGES */}
       <section className="relative py-28 bg-[#EEEEEE] overflow-hidden select-text">
         {/* Subtle printing marks/grid paper background (dark lines for light background) */}
         <div className="absolute inset-0 bg-print-grid opacity-10 pointer-events-none"></div>
@@ -365,158 +421,7 @@ export function Infrastructure() {
         </div>
       </section>
 
-      {/* SECTION 3: FEATURED MACHINERY */}
-      <section className="relative py-32 bg-slate-950 overflow-hidden border-y border-slate-900 select-text">
-        {/* Parallax Background container */}
-        <div className="absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30"
-            style={{ backgroundImage: `url('/Images/featured_machinery_dark_bg.png')` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-sky-950/20 to-slate-950/95"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-950/80 border border-sky-800/50 px-2.5 py-1 rounded-full inline-block mb-4">
-              HARDWARE ASSETS
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading leading-tight">
-              Featured Machinery
-            </h2>
-            <div className="w-12 h-1 bg-sky-500 mx-auto mt-4 rounded-full" />
-          </div>
-
-          {/* Simple grid showcasing key machines with large images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {machines.map((mac, index) => (
-              <motion.div
-                key={mac.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="group bg-slate-900/40 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:bg-slate-900/60 hover:border-sky-500/30 hover:translate-y-[-4px] transition-all duration-300 text-left flex flex-col h-full"
-              >
-                {/* Large Machine Image */}
-                <div className="h-60 w-full overflow-hidden bg-slate-950/50 relative border-b border-white/5">
-                  <img
-                    src={mac.image}
-                    alt={mac.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                {/* Text details */}
-                <div className="p-6 md:p-8 space-y-2 flex-grow">
-                  <h3 className="text-lg font-bold text-white font-heading group-hover:text-sky-300 transition-colors duration-300">
-                    {mac.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-slate-200 font-sans font-light leading-relaxed">
-                    {mac.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* SECTION 6: CAPACITY & SCALE */}
-      <section className="relative py-28 bg-gradient-to-br from-[#0057B8] via-[#007cdb] to-[#0EA5E9] overflow-hidden border-t border-white/10 select-text">
-        {/* Inverted print grid background */}
-        <div className="absolute inset-0 bg-print-grid opacity-20 invert pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            {/* Left Column: Heading & Narrative */}
-            <div className="lg:col-span-5 text-left space-y-6">
-              <span className="text-[10px] font-bold text-white tracking-widest font-heading uppercase bg-white/10 border border-white/25 px-3.5 py-1.5 rounded-full inline-block">
-                Production Scale
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading leading-[1.15]">
-                Built for High-Volume Publishing
-              </h2>
-              <p className="text-base text-blue-50 font-sans font-light leading-relaxed">
-                Our plant is custom-engineered to execute complex, high-capacity printing tasks under strict timelines. With fully integrated preparation, offset press units, and automated binderies, we offer scalability that guarantees speed without sacrificing quality.
-              </p>
-              <div className="pt-4">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2.5 px-6 py-3 border border-white/30 text-white rounded-full font-medium text-sm hover:bg-white hover:text-royal-blue hover:border-white transition-all duration-300 group font-sans"
-                >
-                  Request Plant Capacity Sheet
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Dynamic Asymmetric Metrics Grid */}
-            <div className="lg:col-span-7 grid grid-cols-6 gap-6 w-full">
-              {[
-                { 
-                  val: 30, 
-                  suffix: "+", 
-                  label: "Machinery Assets", 
-                  desc: "High-performance prepress, press, and post-press systems.",
-                  gridClass: "col-span-6 sm:col-span-3"
-                },
-                { 
-                  val: 8, 
-                  suffix: " Colour", 
-                  label: "Perfector Passes", 
-                  desc: "High-fidelity double-sided printing in a single pass.",
-                  gridClass: "col-span-6 sm:col-span-3"
-                },
-                { 
-                  val: 20, 
-                  suffix: " Station", 
-                  label: "Gathering loops", 
-                  desc: "Collation machinery with multi-station loops.",
-                  gridClass: "col-span-6 sm:col-span-2"
-                },
-                { 
-                  val: 10000, 
-                  suffix: "+", 
-                  label: "Covers / Hour", 
-                  desc: "High-speed cover wrapping and laminating.",
-                  gridClass: "col-span-6 sm:col-span-2"
-                },
-                { 
-                  val: 2, 
-                  suffix: "M+", 
-                  label: "Daily Punch Capacity", 
-                  desc: "Dynamic punching and die-cutting.",
-                  gridClass: "col-span-6 sm:col-span-2"
-                }
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className={`${stat.gridClass} bg-white/10 border border-white/20 backdrop-blur-lg rounded-[20px] p-6 text-left hover:bg-white/15 hover:border-white/35 hover:scale-[1.02] transition-all duration-300 group`}
-                >
-                  <div className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1.5">
-                    <CountUp to={stat.val} suffix={stat.suffix} />
-                  </div>
-                  <h3 className="text-white font-bold text-base font-heading mb-1">
-                    {stat.label}
-                  </h3>
-                  <p className="text-blue-50 font-sans text-xs font-light leading-relaxed">
-                    {stat.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: CTA */}
+      {/* SECTION 5: CTA */}
       <section className="relative py-28 md:py-36 overflow-hidden border-t border-gray-200/50 bg-[#0A2342] text-white">
         {/* Facility background with overlay */}
         <div

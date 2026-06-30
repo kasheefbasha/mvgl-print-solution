@@ -266,7 +266,7 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="group bg-white rounded-3xl border border-slate-150 overflow-hidden shadow-sm hover:shadow-xl hover:border-sky-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full text-left relative">
+    <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-sky-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full text-left relative">
       {/* Image / Fallback block */}
       <div className="h-52 w-full bg-slate-50 relative overflow-hidden">
         {!imageError ? (
@@ -307,7 +307,7 @@ function InitiativeCard({ num, title, desc, image, icon: Icon }: InitiativeCardP
           <h3 className="text-base font-bold text-deep-navy font-heading leading-snug group-hover:text-sky-600 transition-colors duration-300">
             {title}
           </h3>
-          <p className="text-xs text-gray-500 font-sans leading-relaxed font-light">
+          <p className="text-xs text-slate-600 font-sans leading-relaxed font-light">
             {desc}
           </p>
         </div>
@@ -457,7 +457,7 @@ export function Sustainability() {
           className="absolute inset-0 z-0 bg-cover bg-center opacity-45 scale-105 transition-transform duration-100 ease-out"
           style={{
             transform: `translateY(${heroScroll * 0.4}px) scale(1.05)`,
-            backgroundImage: `url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000')`
+            backgroundImage: `url('/Images/Sus1.jpg')`
           }}
         />
 
@@ -552,24 +552,24 @@ export function Sustainability() {
       >
         {/* Background Image Parallax Layer */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-35 z-0"
-          style={{ backgroundImage: "url('/Images/carbon_disclosures_dark_bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80 z-0"
+          style={{ backgroundImage: "url('/Images/CBR1.jpg')" }}
         />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950 pointer-events-none z-10"></div>
+        {/* Soft overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none z-10"></div>
 
         <div className="absolute inset-0 bg-print-grid opacity-20 pointer-events-none z-10"></div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto mb-16">
-            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block mb-4">
+            <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block mb-4 shadow-md">
               CARBON AUDITS
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mt-4 mb-4 leading-tight font-heading">
               Carbon Footprint Disclosures
             </h2>
-            <p className="text-xs md:text-sm text-slate-300 font-sans font-light leading-relaxed max-w-xl mx-auto">
+            <p className="text-xs md:text-sm text-slate-200 font-sans font-light leading-relaxed max-w-xl mx-auto">
               Access and preview our certified greenhouse gas accounting sheets and environmental assessment reports.
             </p>
           </div>
@@ -627,25 +627,26 @@ export function Sustainability() {
 
 
       {/* SECTION 04: OUR SUSTAINABILITY JOURNEY (Interactive Showcase) */}
-      <section className="relative py-28 bg-white overflow-hidden font-sans select-text border-t border-b border-slate-100">
+      {/* SECTION 03: A COMMITMENT THAT CONTINUES TO GROW (ROADMAP) */}
+      <section className="relative py-28 bg-[#EEEEEE] overflow-hidden font-sans select-text border-t border-b border-slate-200/50">
         {/* Background Parallax Layer */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-[0.04] z-0 pointer-events-none"
           style={{ backgroundImage: "url('/Images/Sus1.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EEEEEE]/95 via-[#EEEEEE]/80 to-[#EEEEEE] z-10 pointer-events-none" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
           <div className="text-left max-w-3xl mb-16">
-            <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-500/5 border border-sky-500/10 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-700 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block">
               JOURNEY ROADMAP
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading mt-4 leading-tight">
               A Commitment That Continues to Grow
             </h2>
-            <p className="text-xs md:text-sm text-slate-500 font-sans font-light leading-relaxed max-w-xl mt-3">
+            <p className="text-xs md:text-sm text-slate-600 font-sans font-light leading-relaxed max-w-xl mt-3">
               Explore how we have scaled our ecological targets and green integrations step-by-step from 2019 to today.
             </p>
           </div>
@@ -655,7 +656,7 @@ export function Sustainability() {
 
             {/* LEFT COLUMN: Year Switcher Timeline */}
             <div className="lg:col-span-4 flex flex-col justify-center">
-              <div className="relative pl-8 border-l-2 border-slate-100 space-y-6 py-4">
+              <div className="relative pl-8 border-l-2 border-slate-300 space-y-6 py-4">
                 {/* Year indicators */}
                 {milestones.map((m, idx) => {
                   const isActive = activeMilestoneIndex === idx;
@@ -673,7 +674,7 @@ export function Sustainability() {
                       {isActive && (
                         <motion.div
                           layoutId="activeTimelineIndicator"
-                          className="absolute -left-[35px] w-[5px] h-[32px] bg-sky-500 rounded-r-full shadow-[0_0_12px_rgba(14,165,233,0.3)]"
+                          className="absolute -left-[35px] w-[5px] h-[32px] bg-sky-600 rounded-r-full shadow-[0_0_12px_rgba(14,165,233,0.3)]"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -683,7 +684,7 @@ export function Sustainability() {
                         "w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center -ml-[43px] z-20",
                         isActive
                           ? "bg-sky-500 border-sky-500 scale-120 shadow-[0_0_8px_rgba(14,165,233,0.3)]"
-                          : "bg-white border-slate-200 group-hover:border-slate-400"
+                          : "bg-[#EEEEEE] border-slate-300 group-hover:border-slate-400"
                       )}>
                         {isActive && <div className="w-1.5 h-1.5 bg-white rounded-full" />}
                       </div>
@@ -692,13 +693,13 @@ export function Sustainability() {
                       <div className="space-y-0.5">
                         <span className={cn(
                           "text-xl font-bold font-heading transition-colors duration-300 block",
-                          isActive ? "text-sky-600 text-2xl" : "text-slate-400 group-hover:text-slate-600"
+                          isActive ? "text-sky-700 text-2xl" : "text-slate-500 group-hover:text-slate-700"
                         )}>
                           {m.year}
                         </span>
                         <span className={cn(
                           "text-[10px] font-sans font-light transition-colors duration-300 line-clamp-1 max-w-[200px]",
-                          isActive ? "text-slate-700 font-normal" : "text-slate-400 group-hover:text-slate-500"
+                          isActive ? "text-slate-700 font-normal" : "text-slate-500 group-hover:text-slate-600"
                         )}>
                           {m.title}
                         </span>
@@ -720,13 +721,13 @@ export function Sustainability() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.4 }}
-                    className="w-full bg-slate-50/80 backdrop-blur-md border border-slate-200/60 p-6 md:p-8 rounded-3xl shadow-xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center"
+                    className="w-full bg-white/95 backdrop-blur-md border border-slate-200/80 p-6 md:p-8 rounded-3xl shadow-xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center"
                   >
                     {/* Corner decorative glow */}
                     <div className="absolute top-0 right-0 w-48 h-48 bg-sky-500/[0.03] rounded-bl-full pointer-events-none" />
 
                     {/* Image with zoom effect */}
-                    <div className="w-full md:w-2/5 shrink-0 relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-64 border border-slate-200/50 group bg-slate-100 shadow-md">
+                    <div className="w-full md:w-2/5 shrink-0 relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-64 border border-slate-250/50 group bg-slate-100 shadow-md">
                       <img
                         src={milestones[activeMilestoneIndex].image}
                         alt={milestones[activeMilestoneIndex].title}
@@ -743,13 +744,13 @@ export function Sustainability() {
                       <h3 className="text-xl md:text-2xl font-bold text-deep-navy font-heading leading-snug">
                         {milestones[activeMilestoneIndex].title}
                       </h3>
-                      <p className="text-xs md:text-sm text-slate-600 font-sans font-light leading-relaxed">
+                      <p className="text-xs md:text-sm text-slate-650 font-sans font-light leading-relaxed">
                         {milestones[activeMilestoneIndex].desc}
                       </p>
 
                       {/* Metric visual pill */}
                       <div className="pt-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-sky-500/15 bg-sky-500/5 text-sky-600 text-[10px] font-bold uppercase tracking-wider font-heading">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-sky-500/15 bg-sky-500/5 text-sky-700 text-[10px] font-bold uppercase tracking-wider font-heading">
                           <Sparkles className="w-3.5 h-3.5" />
                           Validated Achievement
                         </span>
@@ -760,7 +761,7 @@ export function Sustainability() {
               </div>
 
               {/* CONTROLS BAR: Play, Pause, Previous, Next */}
-              <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-6">
+              <div className="mt-8 flex items-center justify-between border-t border-slate-300 pt-6">
 
                 {/* Autoplay & Auto indicator */}
                 <div className="flex items-center gap-3">
@@ -770,14 +771,14 @@ export function Sustainability() {
                     className={cn(
                       "w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 cursor-pointer",
                       isPlaying
-                        ? "border-sky-500/20 text-sky-600 bg-sky-500/5 shadow-sm"
-                        : "border-slate-200 text-slate-400 hover:text-slate-655 hover:border-slate-300"
+                        ? "border-sky-500/30 text-sky-700 bg-sky-500/10 shadow-sm"
+                        : "border-slate-300 text-slate-500 hover:text-slate-700 hover:border-slate-400"
                     )}
                     aria-label={isPlaying ? "Pause autoplay" : "Play autoplay"}
                   >
                     {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                   </button>
-                  <span className="text-[10px] text-slate-505 font-mono">
+                  <span className="text-[10px] text-slate-500 font-mono">
                     {isPlaying ? "AUTOPLAYING ROADMAP" : "AUTOPLAY PAUSED"}
                   </span>
                 </div>
@@ -790,7 +791,7 @@ export function Sustainability() {
                       setActiveMilestoneIndex((prev) => (prev === 0 ? milestones.length - 1 : prev - 1));
                       setIsPlaying(false);
                     }}
-                    className="w-10 h-10 rounded-full border border-slate-200 text-slate-400 hover:text-slate-655 hover:border-slate-300 flex items-center justify-center transition-all duration-300 cursor-pointer"
+                    className="w-10 h-10 rounded-full border border-slate-300 text-slate-500 hover:text-slate-700 hover:border-slate-400 flex items-center justify-center transition-all duration-300 cursor-pointer"
                     aria-label="Previous milestone"
                   >
                     <ChevronLeft className="w-4.5 h-4.5" />
@@ -801,7 +802,7 @@ export function Sustainability() {
                       setActiveMilestoneIndex((prev) => (prev + 1) % milestones.length);
                       setIsPlaying(false);
                     }}
-                    className="w-10 h-10 rounded-full border border-slate-200 text-slate-400 hover:text-slate-655 hover:border-slate-300 flex items-center justify-center transition-all duration-300 cursor-pointer"
+                    className="w-10 h-10 rounded-full border border-slate-300 text-slate-500 hover:text-slate-700 hover:border-slate-400 flex items-center justify-center transition-all duration-300 cursor-pointer"
                     aria-label="Next milestone"
                   >
                     <ChevronRight className="w-4.5 h-4.5" />
@@ -821,10 +822,11 @@ export function Sustainability() {
       <section className="relative py-24 md:py-32 bg-slate-950 overflow-x-clip scroll-mt-24">
         {/* Background Parallax Layer */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30 z-0 pointer-events-none"
-          style={{ backgroundImage: "url('/Images/sustainability_pillars_dark_bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80 z-0 pointer-events-none"
+          style={{ backgroundImage: "url('/Images/Core Sustainability Pillars.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950 pointer-events-none z-10" />
+        {/* Soft overlay for text readability */}
+        <div className="absolute inset-0 bg-black/45 pointer-events-none z-10" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -834,7 +836,7 @@ export function Sustainability() {
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-36 space-y-8">
                 <div className="space-y-4">
-                  <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full inline-block">
+                  <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
                     OUR PILLARS
                   </span>
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading font-bold">
@@ -1000,7 +1002,7 @@ export function Sustainability() {
       </section>
 
       {/* SECTION 06: SUSTAINABILITY INITIATIVES (Interactive Filter Dashboard) */}
-      <section className="relative py-28 bg-slate-50 overflow-hidden font-sans border-t border-b border-slate-100">
+      <section className="relative py-28 bg-[#EEEEEE] overflow-hidden font-sans border-t border-b border-slate-200/50">
         {/* Background print grid */}
         <div className="absolute inset-0 bg-print-grid opacity-[0.04] pointer-events-none z-0"></div>
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-500/[0.01] rounded-full blur-[120px] pointer-events-none z-0" />
@@ -1009,13 +1011,13 @@ export function Sustainability() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[9px] font-bold text-sky-600 tracking-widest font-heading uppercase bg-sky-50 border border-sky-100 px-3 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-700 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block">
               OPERATIONAL ACTIONS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-deep-navy font-heading mt-4 leading-tight">
               Sustainability Initiatives
             </h2>
-            <p className="text-xs md:text-sm text-slate-500 font-sans font-light leading-relaxed mt-3">
+            <p className="text-xs md:text-sm text-slate-600 font-sans font-light leading-relaxed mt-3">
               Every print run we execute is backed by actionable, verified carbon and materials mitigation programs.
             </p>
           </div>
@@ -1040,7 +1042,7 @@ export function Sustainability() {
                     "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide border transition-all duration-300 cursor-pointer shadow-sm focus:outline-none flex items-center gap-2",
                     activeCategory === tab.id
                       ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-500/15"
-                      : "bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-700"
+                      : "bg-white text-slate-600 border-slate-300 hover:border-slate-400 hover:text-slate-800"
                   )}
                 >
                   <span>{tab.label}</span>
@@ -1048,7 +1050,7 @@ export function Sustainability() {
                     "text-[10px] font-mono rounded-full px-1.5 py-0.5",
                     activeCategory === tab.id
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-400"
+                      : "bg-slate-200 text-slate-500"
                   )}>
                     {count}
                   </span>
@@ -1092,22 +1094,26 @@ export function Sustainability() {
         </div>
       </section>
 
-      {/* SECTION 07: MEASURING OUR IMPACT (Apple-style Analytics) */}
       <section 
-        className="relative py-28 bg-slate-950 overflow-hidden bg-cover bg-center bg-no-repeat select-text"
-        style={{ backgroundImage: "url('/Images/sustainability_design_dark_bg.png')" }}
+        className="relative py-28 bg-slate-950 overflow-hidden select-text"
       >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950 pointer-events-none"></div>
+        {/* Background Image Parallax Layer */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80 z-0 pointer-events-none"
+          style={{ backgroundImage: "url('/Images/MOI1.jpg')" }}
+        />
+
+        {/* Soft overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none z-10"></div>
 
         {/* Subtle background printing alignment grids */}
-        <div className="absolute inset-0 bg-print-grid opacity-15 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-print-grid opacity-15 pointer-events-none z-10"></div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="relative z-20 max-w-6xl mx-auto px-6 lg:px-8">
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-6 text-left space-y-4">
-              <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full inline-block">
+              <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
                 ANALYTICS
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading mt-2">

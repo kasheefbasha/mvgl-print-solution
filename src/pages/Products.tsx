@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   CheckCircle2,
   ArrowRight,
@@ -18,6 +19,53 @@ import {
   Package
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+
+function HardcoverCarousel() {
+  const images = [
+    "/Book Image/HardCover Books/HC1.JPG",
+    "/Book Image/HardCover Books/HC2.JPG",
+    "/Book Image/HardCover Books/HC3.JPG",
+    "/Book Image/HardCover Books/HC4.JPG"
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full h-full">
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={index}
+          src={images[index]}
+          alt={`Hardcover book showcase ${index + 1}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+
+      {/* Navigation Dot Indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white/20 cursor-pointer outline-none focus:outline-none ${index === i ? "bg-white w-5" : "bg-white/40 hover:bg-white/70"
+              }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 interface FormatSection {
   id: string;
@@ -230,11 +278,15 @@ export function Products() {
                     <div className="relative group">
 
                       <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border ${isDark ? "border-white/10 bg-slate-900" : "border-gray-200/80 bg-white"}`}>
-                        <img
-                          src={sec.image}
-                          alt={sec.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        {sec.id === "hardcover" ? (
+                          <HardcoverCarousel />
+                        ) : (
+                          <img
+                            src={sec.image}
+                            alt={sec.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )}
                         <div className={`absolute inset-0 ring-1 ring-inset ${isDark ? "ring-white/10" : "ring-black/10"} rounded-2xl pointer-events-none`} />
                       </div>
                     </div>
@@ -269,8 +321,8 @@ export function Products() {
                             <span
                               key={item}
                               className={`text-[11px] font-sans font-light px-2.5 py-1 rounded border ${isDark
-                                  ? 'bg-white/10 border-white/20 text-white'
-                                  : 'bg-white border-gray-200 text-gray-600'
+                                ? 'bg-white/10 border-white/20 text-white'
+                                : 'bg-white border-gray-200 text-gray-600'
                                 }`}
                             >
                               {item}
@@ -288,8 +340,8 @@ export function Products() {
                             <span
                               key={cap}
                               className={`text-[10px] font-sans font-semibold px-2.5 py-1 rounded-full ${isDark
-                                  ? 'bg-white/15 border border-white/25 text-white'
-                                  : 'bg-royal-blue/5 border border-royal-blue/10 text-royal-blue'
+                                ? 'bg-white/15 border border-white/25 text-white'
+                                : 'bg-royal-blue/5 border border-royal-blue/10 text-royal-blue'
                                 }`}
                             >
                               {cap}
@@ -323,17 +375,18 @@ export function Products() {
         {/* Parallax Background plate container */}
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-40"
-            style={{ backgroundImage: `url('/Images/sustainability_design_dark_bg.png')` }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80"
+            style={{ backgroundImage: `url('/Images/SBD1.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-sky-950/30 to-slate-950/95"></div>
+          {/* Soft overlay for text readability */}
+          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[10px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-950/80 border border-sky-800/50 px-3 py-1 rounded-full inline-block">
+            <span className="text-[10px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
               Eco-Friendly Commitments
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white font-heading mt-6 mb-4">

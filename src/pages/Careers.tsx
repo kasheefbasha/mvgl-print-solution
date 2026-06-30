@@ -459,10 +459,11 @@ export function Careers() {
       <section className="relative py-24 md:py-32 bg-slate-950 overflow-x-clip scroll-mt-24">
         {/* Background Parallax Layer */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30 z-0 pointer-events-none"
-          style={{ backgroundImage: "url('/Images/careers_culture_dark_bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80 z-0 pointer-events-none"
+          style={{ backgroundImage: "url('/Images/COE1.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950 pointer-events-none z-10" />
+        {/* Soft overlay for text readability */}
+        <div className="absolute inset-0 bg-black/45 pointer-events-none z-10" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -472,7 +473,7 @@ export function Careers() {
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-36 space-y-8">
                 <div className="space-y-4">
-                  <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full inline-block">
+                  <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
                     OUR VALUES
                   </span>
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading font-bold">
@@ -701,15 +702,16 @@ export function Careers() {
       <section className="relative py-28 bg-slate-950 overflow-x-clip">
         {/* Background Parallax Layer */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30 z-0 pointer-events-none"
-          style={{ backgroundImage: "url('/Images/careers_workplace_dark_bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-80 z-0 pointer-events-none"
+          style={{ backgroundImage: "url('/Images/SIR1.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950 pointer-events-none z-10" />
+        {/* Soft overlay for text readability */}
+        <div className="absolute inset-0 bg-black/45 pointer-events-none z-10" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
-            <span className="text-[9px] font-bold text-sky-400 tracking-widest font-heading uppercase bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded-full inline-block">
+            <span className="text-[9px] font-bold text-sky-300 tracking-widest font-heading uppercase bg-slate-950/90 border border-sky-500/30 px-3.5 py-1.5 rounded-full inline-block shadow-md">
               OUR STANDARDS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-heading leading-tight">
